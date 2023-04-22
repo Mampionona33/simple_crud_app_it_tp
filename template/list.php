@@ -22,7 +22,7 @@
         </th>
 
         <tbody>
-            <?php foreach ($user as $key => $value) { ?>
+            <?php foreach ($users as $key => $value) { ?>
                 <tr>
                     <td>
                         <input type="checkbox" name="selected_id" id="selected_id">
