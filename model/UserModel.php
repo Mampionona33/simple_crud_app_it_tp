@@ -51,6 +51,19 @@ function create_user($user)
     }
 }
 
+function delete_users($users)
+{
+    $db = connect_db();
+    try {
+        $stmt = $db->prepare("DELETE FROM users WHERE id IN (" . implode(',', array_fill(0, count($users), '?')) . ")");
+        $stmt->execute($users);
+        header("Location: .");
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+
 // Utilities
 function format_civilit_and_sex($row)
 {
