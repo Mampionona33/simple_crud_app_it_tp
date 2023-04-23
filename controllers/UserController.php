@@ -17,3 +17,9 @@ function show_details($id)
     $user =  get_user($id);
     user_detail($user);
 }
+
+function show_form_edit($id)
+{
+    $user =  get_user($id);
+    form_edit($user);
+}

@@ -17,8 +17,7 @@ if ($uri == "/" || $uri == "/index.php" || $uri == "/list") {
     show_list();
 }
 
-
-if ($uri == "/detail/") {
+if ($uri == "/details/") {
     if (isset($_GET['id'])) {
         $id = $_GET["id"];
         show_details($id);
@@ -27,4 +26,11 @@ if ($uri == "/detail/") {
 
 if ($uri == "/create") {
     form_create();
+}
+
+if ($uri == "/editUser/") {
+    if (isset($_GET["id"])) {
+        $id = $_GET["id"];
+        show_form_edit($id);
+    }
 }

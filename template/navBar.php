@@ -12,10 +12,16 @@
             <li><button id="delete_selected">Supprimer sélection</button></li>
             <li><a href="/import">Importer données</a></li>
             <li><a href="/export">Exporter données CSV</a></li>
-        <?php } else if (strpos($_SERVER['REQUEST_URI'], '/detail/') !== false) { ?>
-            <li><a href="/edit/<?php echo $user['id']; ?>">Modifier</a></li>
+        <?php } else if (strpos($_SERVER['REQUEST_URI'], '/details/') !== false) {
+            $id = substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['REQUEST_URI'], '/') + 1); ?>
+            <li><a href="/editUser/<?php echo $id; ?>">Modifier</a></li>
             <li><a href="/list">Retour à la liste</a></li>
-            <li><a href="/preview/<?php echo $user['id']; ?>">Preview PDF</a></li>
+            <li><a href="/preview/<?php echo $id; ?>">Preview PDF</a></li>
+        <?php } else if (strpos($_SERVER['REQUEST_URI'], '/editUser/') !== false) {
+            $id = substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['REQUEST_URI'], '/') + 1); ?>
+            <li><a href="/details/<?php echo $id; ?>">Retour au détail</a></li>
+            <li><a href="/list">Retour à la liste</a></li>
+            <li><a href="/preview/<?php echo $id; ?>">Preview PDF</a></li>
         <?php } else if ($_SERVER['REQUEST_URI'] === '/create') { ?>
             <li><a href="/list">Retour à la liste</a></li>
         <?php } ?>
