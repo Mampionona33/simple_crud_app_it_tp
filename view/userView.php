@@ -41,3 +41,29 @@ function user_detail($user)
     $content .= "</div>";
     include './template/template.php';
 }
+
+function form_create()
+{
+    $title = "Create user";
+    $content = "<div>";
+    $content .= '<form method="post" action="/" style="display: flex; flex-direction: column; gap: 1rem;">';
+    $content .= '<input type="text" placeholder="Nom" required name="nom" id="nom" >';
+    $content .= '<input type="text" placeholder="Prénom" required name="prenom" id="prenom" >';
+    $content .= '<input type="number" min=0  placeholder="Age" required name="age" id="age" >';
+    $content .= '<input type="email" placeholder="Email" name="email" id="email" >';
+    $content .= '<input type="text" placeholder="Adresse" name="adress" id="adress" >';
+    $content .= '<input type="text" placeholder="Tel" name="tel" id="tel" >';
+    $content .= '<div style="display: flex; gap: 1rem;">';
+    $content .= '<div><input type="radio" name="civilite" value="0" id="civilite_mme" required> <label for="civilite_mme">Mme</label></div>';
+    $content .= '<div><input type="radio" name="civilite" value="1" id="civilite_mr" checked required> <label for="civilite_mr">Mr</label></div>';
+    $content .= '</div>';
+    $content .= '<div style="display: flex; gap: 1rem;">';
+    $content .= '<div><input type="radio" name="sex" value="0" id="sex_femme" required> <label for="sex_femme">Femme</label></div>';
+    $content .= '<div><input type="radio" name="sex" value="1" id="sex_homme" checked required> <label for="sex_homme">Homme</label></div>';
+    $content .= '</div>';
+    $content .= '<input type="reset" value="Recommencer">';
+    $content .= '<input type="submit" value="Créer">';
+    $content .= "</form>";
+    $content .= "</div>";
+    include './template/template.php';
+}

@@ -12,3 +12,7 @@ if ($uri == "/detail/") {
         show_details($id);
     }
 }
+
+if ($uri == "/create") {
+    form_create();
+}
