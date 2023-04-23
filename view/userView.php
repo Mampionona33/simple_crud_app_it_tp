@@ -3,24 +3,26 @@
 function user_table($users)
 {
     $title = "List users";
-    $content = "<table>";
+    $content = '<form id="tableForm" method="post" action="/">';
+    $content .= "<table>";
     $content .= "<tr><th><input type=\"checkbox\" name=\"selected_ids\" id=\"selected_ids\"></th><th>Noms</th><th>Prénoms</th><th>Age</th><th>Actions</th> </tr>";
 
-    // Parcours des utilisateurs et affichage de chaque ligne du tableau
     foreach ($users as $user) {
         $content .= "<tr>";
-        $content .= '<td><input type="checkbox" name="selected_id[]" id="selected_id"></td>';
+        $content .= '<td><input title="select_user" type="checkbox" name="deleted_ids[]" value="' . $user["id"] . '"></td>';
         $content .= "<td>" . $user['nom'] . "</td>";
         $content .= "<td>" . $user['prenom'] . "</td>";
         $content .= "<td>" . $user['age'] . "</td>";
         $content .= "<td>";
-        $content .= '<form method="post" action="/"><input type="hidden" name="action" value="delete"><input type="hidden" name="id" value="' . $user["id"] . '"><button type="submit">Delete</button></form>';
+        $content .= '<input type="hidden" name="delete_id" value="' . $user["id"] . '">';
+        $content .= '<input type="button" name="delete_one" id="btn_delete_one" value="Delete">';
         $content .= '<a href="/detail/?id=' . $user['id'] . '">Details</a>';
         $content .= "</td>";
         $content .= "</tr>";
     }
 
     $content .= "</table>";
+    $content .= '</form>';
 
     // Inclusion du contenu dans le template
     include './template/template.php';
