@@ -10,6 +10,16 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/handleCheckAll.js":
+/*!*******************************!*\
+  !*** ./src/handleCheckAll.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"handleCheckAll\": () => (/* binding */ handleCheckAll)\n/* harmony export */ });\nvar handleCheckAll = function handleCheckAll() {\n  var checkboxAll = document.getElementById(\"selected_ids\");\n  checkboxAll.addEventListener(\"change\", function (event) {\n    var isChecked = event.target.checked;\n    var checkboxes = document.querySelectorAll('input[name=\"deleted_ids[]\"]');\n    for (var i = 0; i < checkboxes.length; i++) {\n      if (checkboxes[i].type === \"checkbox\") {\n        checkboxes[i].checked = isChecked;\n      }\n    }\n  });\n};\n\n//# sourceURL=webpack://my-webpack-project/./src/handleCheckAll.js?");
+
+/***/ }),
+
 /***/ "./src/handleClickDeleteSelected.js":
 /*!******************************************!*\
   !*** ./src/handleClickDeleteSelected.js ***!
@@ -26,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _handleClickDeleteSelected__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./handleClickDeleteSelected */ \"./src/handleClickDeleteSelected.js\");\nconsole.log(\"Hello World!\");\n\n(0,_handleClickDeleteSelected__WEBPACK_IMPORTED_MODULE_0__.handleClickDeleteSelected)();\n\n//# sourceURL=webpack://my-webpack-project/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _handleClickDeleteSelected__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./handleClickDeleteSelected */ \"./src/handleClickDeleteSelected.js\");\n/* harmony import */ var _handleCheckAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./handleCheckAll */ \"./src/handleCheckAll.js\");\nconsole.log(\"bundle loaded!!\");\n\n\n(0,_handleClickDeleteSelected__WEBPACK_IMPORTED_MODULE_0__.handleClickDeleteSelected)();\n(0,_handleCheckAll__WEBPACK_IMPORTED_MODULE_1__.handleCheckAll)();\n\n//# sourceURL=webpack://my-webpack-project/./src/index.js?");
 
 /***/ })
 

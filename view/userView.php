@@ -5,7 +5,7 @@ function user_table($users)
     $title = "List users";
     $content = '<form id="tableForm" method="post" action="/">';
     $content .= "<table>";
-    $content .= "<tr><th><input type=\"checkbox\" name=\"selected_ids\" id=\"selected_ids\"></th><th>Noms</th><th>Prénoms</th><th>Age</th><th>Actions</th> </tr>";
+    $content .= "<tr><th><input type=\"checkbox\" name=\"selected_ids\" id=\"selected_ids\"  ></th><th>Noms</th><th>Prénoms</th><th>Age</th><th>Actions</th> </tr>";
 
     foreach ($users as $user) {
         $content .= "<tr>";
