@@ -1,4 +1,4 @@
-export const handleClickDelete = () => {
+export const handleClickDeleteSelected = () => {
   const delete_selected = document.getElementById("delete_selected");
   const deleted_ids = document.querySelectorAll('input[name="deleted_ids[]"]');
   const tableForm = document.getElementById("tableForm");

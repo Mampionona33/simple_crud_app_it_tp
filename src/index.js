@@ -1,4 +1,4 @@
 console.log("Hello World!");
-import { handleClickDelete } from "./handleClickDelete";
+import { handleClickDeleteSelected } from "./handleClickDeleteSelected";
 
-handleClickDelete();
+handleClickDeleteSelected();

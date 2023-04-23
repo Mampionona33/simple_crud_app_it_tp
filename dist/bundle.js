@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/handleClickDelete.js":
-/*!**********************************!*\
-  !*** ./src/handleClickDelete.js ***!
-  \**********************************/
+/***/ "./src/handleClickDeleteSelected.js":
+/*!******************************************!*\
+  !*** ./src/handleClickDeleteSelected.js ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"handleClickDelete\": () => (/* binding */ handleClickDelete)\n/* harmony export */ });\nvar handleClickDelete = function handleClickDelete() {\n  var delete_selected = document.getElementById(\"delete_selected\");\n  var deleted_ids = document.querySelectorAll('input[name=\"deleted_ids[]\"]');\n  var tableForm = document.getElementById(\"tableForm\");\n  delete_selected.addEventListener(\"click\", function (ev) {\n    var listSelectedId = [];\n    deleted_ids.forEach(function (element) {\n      var checkedElement = element.checked;\n      if (checkedElement) {\n        listSelectedId.push(element.value);\n      }\n    });\n    if (listSelectedId.length > 0) {\n      var confirmDelete = confirm(\"Êtes-vous sûr de vouloir supprimer ces éléments ?\");\n      if (confirmDelete) {\n        // Suppression des champs cachés ajoutés\n        document.querySelectorAll('input[name=\"delete_id\"]').forEach(function (input) {\n          return input.remove();\n        });\n        // Soumission du formulaire\n        tableForm.submit();\n      }\n    } else {\n      alert(\"Veuillez sélectionner au moins un élément à supprimer.\");\n    }\n  });\n};\n\n//# sourceURL=webpack://my-webpack-project/./src/handleClickDelete.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"handleClickDeleteSelected\": () => (/* binding */ handleClickDeleteSelected)\n/* harmony export */ });\nvar handleClickDeleteSelected = function handleClickDeleteSelected() {\n  var delete_selected = document.getElementById(\"delete_selected\");\n  var deleted_ids = document.querySelectorAll('input[name=\"deleted_ids[]\"]');\n  var tableForm = document.getElementById(\"tableForm\");\n  delete_selected.addEventListener(\"click\", function (ev) {\n    var listSelectedId = [];\n    deleted_ids.forEach(function (element) {\n      var checkedElement = element.checked;\n      if (checkedElement) {\n        listSelectedId.push(element.value);\n      }\n    });\n    if (listSelectedId.length > 0) {\n      var confirmDelete = confirm(\"Êtes-vous sûr de vouloir supprimer ces éléments ?\");\n      if (confirmDelete) {\n        // Suppression des champs cachés ajoutés\n        document.querySelectorAll('input[name=\"delete_id\"]').forEach(function (input) {\n          return input.remove();\n        });\n        // Soumission du formulaire\n        tableForm.submit();\n      }\n    } else {\n      alert(\"Veuillez sélectionner au moins un élément à supprimer.\");\n    }\n  });\n};\n\n//# sourceURL=webpack://my-webpack-project/./src/handleClickDeleteSelected.js?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _handleClickDelete__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./handleClickDelete */ \"./src/handleClickDelete.js\");\nconsole.log(\"Hello World!\");\n\n(0,_handleClickDelete__WEBPACK_IMPORTED_MODULE_0__.handleClickDelete)();\n\n//# sourceURL=webpack://my-webpack-project/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _handleClickDeleteSelected__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./handleClickDeleteSelected */ \"./src/handleClickDeleteSelected.js\");\nconsole.log(\"Hello World!\");\n\n(0,_handleClickDeleteSelected__WEBPACK_IMPORTED_MODULE_0__.handleClickDeleteSelected)();\n\n//# sourceURL=webpack://my-webpack-project/./src/index.js?");
 
 /***/ })
 
