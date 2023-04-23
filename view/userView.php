@@ -4,11 +4,12 @@ function user_table($users)
 {
     $title = "List users";
     $content = "<table>";
-    $content .= "<tr><th>Noms</th><th>Prénoms</th><th>Age</th><th>Actions</th> </tr>";
+    $content .= "<tr><th><input type=\"checkbox\" name=\"selected_ids\" id=\"selected_ids\"></th><th>Noms</th><th>Prénoms</th><th>Age</th><th>Actions</th> </tr>";
 
     // Parcours des utilisateurs et affichage de chaque ligne du tableau
     foreach ($users as $user) {
         $content .= "<tr>";
+        $content .= '<td><input type="checkbox" name="selected_id[]" id="selected_id"></td>';
         $content .= "<td>" . $user['nom'] . "</td>";
         $content .= "<td>" . $user['prenom'] . "</td>";
         $content .= "<td>" . $user['age'] . "</td>";
@@ -19,7 +20,6 @@ function user_table($users)
         $content .= "</tr>";
     }
 
-    // Fermeture du tableau
     $content .= "</table>";
 
     // Inclusion du contenu dans le template
