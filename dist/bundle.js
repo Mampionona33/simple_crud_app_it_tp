@@ -20,6 +20,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/handleClickDeleteOne.js":
+/*!*************************************!*\
+  !*** ./src/handleClickDeleteOne.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"handleClickDeleteOne\": () => (/* binding */ handleClickDeleteOne)\n/* harmony export */ });\nvar handleClickDeleteOne = function handleClickDeleteOne() {\n  var delete_one = document.getElementsByName(\"delete_one\");\n  var tableForm = document.getElementById(\"tableForm\");\n  if (delete_one.length > 0) {\n    delete_one.forEach(function (element) {\n      var btnId = element.getAttribute(\"id\");\n      var clickedButton = document.getElementById(btnId);\n      clickedButton.addEventListener(\"click\", function (ev) {\n        ev.preventDefault(); // Annuler le comportement par défaut du bouton submit\n        var confirmDelete = confirm(\"\\xCAtes-vous s\\xFBr de vouloir supprimer \".concat(clickedButton.dataset.user, \" ?\"));\n        if (confirmDelete) {\n          var hidenInput = document.createElement(\"input\");\n          var userId = clickedButton.dataset.id;\n          hidenInput.setAttribute(\"type\", \"hidden\");\n          hidenInput.setAttribute(\"name\", \"delete_user_id\");\n          hidenInput.setAttribute(\"value\", userId);\n          tableForm.appendChild(hidenInput);\n          tableForm.submit();\n          tableForm.remove(hidenInput);\n        }\n      });\n    });\n  }\n};\n\n//# sourceURL=webpack://my-webpack-project/./src/handleClickDeleteOne.js?");
+
+/***/ }),
+
 /***/ "./src/handleClickDeleteSelected.js":
 /*!******************************************!*\
   !*** ./src/handleClickDeleteSelected.js ***!
@@ -36,7 +46,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _handleClickDeleteSelected__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./handleClickDeleteSelected */ \"./src/handleClickDeleteSelected.js\");\n/* harmony import */ var _handleCheckAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./handleCheckAll */ \"./src/handleCheckAll.js\");\nconsole.log(\"bundle loaded!!\");\n\n\n(0,_handleClickDeleteSelected__WEBPACK_IMPORTED_MODULE_0__.handleClickDeleteSelected)();\n(0,_handleCheckAll__WEBPACK_IMPORTED_MODULE_1__.handleCheckAll)();\n\n//# sourceURL=webpack://my-webpack-project/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _handleClickDeleteSelected__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./handleClickDeleteSelected */ \"./src/handleClickDeleteSelected.js\");\n/* harmony import */ var _handleCheckAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./handleCheckAll */ \"./src/handleCheckAll.js\");\n/* harmony import */ var _handleClickDeleteOne__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./handleClickDeleteOne */ \"./src/handleClickDeleteOne.js\");\nconsole.log(\"bundle loaded!!\");\n\n\n\n(0,_handleClickDeleteSelected__WEBPACK_IMPORTED_MODULE_0__.handleClickDeleteSelected)();\n(0,_handleCheckAll__WEBPACK_IMPORTED_MODULE_1__.handleCheckAll)();\n(0,_handleClickDeleteOne__WEBPACK_IMPORTED_MODULE_2__.handleClickDeleteOne)();\n\n//# sourceURL=webpack://my-webpack-project/./src/index.js?");
 
 /***/ })
 

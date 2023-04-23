@@ -63,6 +63,18 @@ function delete_users($users)
     }
 }
 
+function delete_user($user)
+{
+    $db = connect_db();
+    try {
+        $stmt = $db->prepare("DELETE FROM users WHERE id IN (" . $user . ")");
+        $stmt->execute();
+        header("Location: .");
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
 
 // Utilities
 function format_civilit_and_sex($row)

@@ -14,8 +14,7 @@ function user_table($users)
         $content .= "<td>" . $user['prenom'] . "</td>";
         $content .= "<td>" . $user['age'] . "</td>";
         $content .= "<td>";
-        $content .= '<input type="hidden" name="delete_id" value="' . $user["id"] . '">';
-        $content .= '<input type="button" name="delete_one" id="btn_delete_one" value="Delete">';
+        $content .= '<input type="button" name="delete_one" id="btn_delete_one' . $user["id"] . '" value="Delete" data-id="' . $user["id"] . '" data-user="' . $user["nom"] . " " . $user["prenom"] . '">';
         $content .= '<a href="/details/?id=' . $user['id'] . '">Details</a>';
         $content .= "</td>";
         $content .= "</tr>";
