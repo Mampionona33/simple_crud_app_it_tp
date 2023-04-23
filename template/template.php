@@ -8,6 +8,7 @@
 <body>
     <?php include "navBar.php" ?>
     <?php echo $content; ?>
+    <script src="../dist/bundle.js"></script>
 </body>
 
 </html>

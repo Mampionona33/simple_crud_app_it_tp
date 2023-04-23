@@ -9,7 +9,7 @@
             </li>
             <li><a href="/create">Ajouter</a></li>
             <li><a href="/preview">Preview PDF</a></li>
-            <li><button id="delete-selected">Supprimer sélection</button></li>
+            <li><button id="delete_selected">Supprimer sélection</button></li>
             <li><a href="/import">Importer données</a></li>
             <li><a href="/export">Exporter données CSV</a></li>
         <?php } else if (strpos($_SERVER['REQUEST_URI'], '/detail/') !== false) { ?>
