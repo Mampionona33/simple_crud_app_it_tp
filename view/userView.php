@@ -47,6 +47,7 @@ function form_create()
     $title = "Create user";
     $content = "<div>";
     $content .= '<form method="post" action="/" style="display: flex; flex-direction: column; gap: 1rem;">';
+    $content .= '<input type="hidden" name="action" value="create">';
     $content .= '<input type="text" placeholder="Nom" required name="nom" id="nom" >';
     $content .= '<input type="text" placeholder="Prénom" required name="prenom" id="prenom" >';
     $content .= '<input type="number" min=0  placeholder="Age" required name="age" id="age" >';

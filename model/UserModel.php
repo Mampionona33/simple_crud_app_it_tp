@@ -25,11 +25,30 @@ function get_user($id)
     return $user;
 }
 
-function create($user)
+function create_user($user)
 {
     $db = connect_db();
-    $sql = "INSERT INTO users (nom, prenom, age, sex, civilite,email,adresse,tel)
-    VALUES ($user),";
+    $stmt = $db->prepare("INSERT INTO users (nom, prenom, age, sex, civilite, email, adresse, tel) 
+                          VALUES (:nom, :prenom, :age, :sex, :civilite, :email, :adresse, :tel)");
+    $stmt->bindParam(':nom', $user['nom']);
+    $stmt->bindParam(':prenom', $user['prenom']);
+    $stmt->bindParam(':age', $user['age'], PDO::PARAM_INT);
+    $stmt->bindParam(':sex', $user['sex'], PDO::PARAM_INT);
+    $stmt->bindParam(':civilite', $user['civilite'], PDO::PARAM_INT);
+    $stmt->bindParam(':email', $user['email']);
+    $stmt->bindParam(':adresse', $user['adresse']);
+    $stmt->bindParam(':tel', $user['tel']);
+
+    // Exécuter la requête SQL
+    try {
+        $stmt->execute();
+        // Rediriger vers la page d'accueil
+        header("Location: .");
+        exit();
+    } catch (PDOException $e) {
+        echo "Erreur lors de la création de l'utilisateur: " . $e->getMessage();
+        exit();
+    }
 }
 
 // Utilities
