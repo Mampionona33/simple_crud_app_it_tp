@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Mon site web</title>
+    <title> <?php echo $title ?> </title>
 </head>
 
 <body>
