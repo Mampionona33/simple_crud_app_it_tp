@@ -1,7 +1,7 @@
 <?php
 
 require_once 'model/UserModel.php';
-require_once 'view/listUsers.php';
+require_once 'view/userView.php';
 
 function show_list()
 {
@@ -10,4 +10,10 @@ function show_list()
 
     // Affichage de la liste des utilisateurs dans la vue
     user_table($users);
+}
+
+function show_details($id)
+{
+    $user =  get_user($id);
+    user_detail($user);
 }
