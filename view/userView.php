@@ -9,7 +9,7 @@ function user_table($users)
 
     foreach ($users as $user) {
         $content .= "<tr>";
-        $content .= '<td><input title="select_user" type="checkbox" name="deleted_ids[]" value="' . $user["id"] . '"></td>';
+        $content .= '<td><input title="select_user" placeholder="checkbox" type="checkbox" name="deleted_ids[]" value="' . $user["id"] . '"></td>';
         $content .= "<td>" . $user['nom'] . "</td>";
         $content .= "<td>" . $user['prenom'] . "</td>";
         $content .= "<td>" . $user['age'] . "</td>";
@@ -49,12 +49,12 @@ function form_create()
     $content = "<div>";
     $content .= '<form method="post" action="/" style="display: flex; flex-direction: column; gap: 1rem;">';
     $content .= '<input type="hidden" name="action" value="create">';
-    $content .= '<input type="text" placeholder="Nom" required name="nom" id="nom" >';
-    $content .= '<input type="text" placeholder="Prénom" required name="prenom" id="prenom" >';
-    $content .= '<input type="number" min=0  placeholder="Age" required name="age" id="age" >';
-    $content .= '<input type="email" placeholder="Email" name="email" id="email" >';
-    $content .= '<input type="text" placeholder="Adresse" required name="adress" id="adress" >';
-    $content .= '<input type="text" placeholder="Tel" name="tel" id="tel" >';
+    $content .= '<label for="nom">Nom</label><input type="text" placeholder="Nom" required name="nom" id="nom" >';
+    $content .= '<label for="prenom">Prénom</label><input type="text" placeholder="Prénom" required name="prenom" id="prenom" >';
+    $content .= '<label for="age">Age</label><input type="number" min=0 placeholder="Age" required name="age" id="age" >';
+    $content .= '<label for="email">Email</label><input type="email" placeholder="Email" name="email" id="email" >';
+    $content .= '<label for="adress">Adresse</label><input type="text" placeholder="Adresse" required name="adress" id="adress" >';
+    $content .= '<label for="tel">Tel</label><input type="text" placeholder="Tel" name="tel" id="tel" >';
     $content .= '<div style="display: flex; gap: 1rem;">';
     $content .= '<div><input type="radio" name="civilite" value="0" id="celibataire" checked required> <label for="celibataire">Célibataire</label></div>';
     $content .= '<div><input type="radio" name="civilite" value="1" id="marie"  required> <label for="marie">Marié(e)</label></div>';
@@ -64,24 +64,26 @@ function form_create()
     $content .= '<div><input type="radio" name="sex" value="1" id="sex_homme" checked required> <label for="sex_homme">Homme</label></div>';
     $content .= '</div>';
     $content .= '<input type="reset" value="Recommencer">';
-    $content .= '<input type="submit" value="Créer">';
+    $content .= '<input type="submit" value="Créer" title="Créer un nouvel utilisateur">';
     $content .= "</form>";
     $content .= "</div>";
     include './template/template.php';
 }
 
+
 function form_edit($user)
 {
     $title = 'Edit User : ' . $user[0]["nom"];
+    header('Content-Type: text/html; charset=utf-8');
     $content = "<div>";
     $content .= '<form method="post" action="/details/?id=' . $user[0]['id'] . '" style="display: flex; flex-direction: column; gap: 1rem;">';
     $content .= '<input type="hidden" name="action" value="edit">';
-    $content .= '<input type="text" placeholder="Nom" required name="nom" id="nom" value="' . $user[0]['nom'] . '" >';
-    $content .= '<input type="text" placeholder="Prénom" required name="prenom" id="prenom" value="' . $user[0]['prenom'] . '" >';
-    $content .= '<input type="number" min=0  placeholder="Age" required name="age" id="age" value="' . $user[0]['age'] . '" >';
-    $content .= '<input type="email" placeholder="Email" name="email" id="email" value="' . $user[0]['email'] . '" >';
-    $content .= '<input type="text" placeholder="Adresse" required name="adress" id="adress" value="' . $user[0]['adresse'] . '" >';
-    $content .= '<input type="text" placeholder="Tel" name="tel" id="tel" value="' . $user[0]['tel'] . '" >';
+    $content .= '<label for="nom">Nom:</label><input type="text" placeholder="Nom" required name="nom" id="nom" value="' . $user[0]['nom'] . '" >';
+    $content .= '<label for="prenom">Prénom:</label><input type="text" placeholder="Prénom" required name="prenom" id="prenom" value="' . $user[0]['prenom'] . '" >';
+    $content .= '<label for="age">Age:</label><input type="number" min=0  placeholder="Age" required name="age" id="age" value="' . $user[0]['age'] . '" >';
+    $content .= '<label for="email">Email:</label><input type="email" placeholder="Email" name="email" id="email" value="' . $user[0]['email'] . '" >';
+    $content .= '<label for="adress">Adresse:</label><input type="text" placeholder="Adresse" required name="adress" id="adress" value="' . $user[0]['adresse'] . '" >';
+    $content .= '<label for="tel">Téléphone:</label><input type="text" placeholder="Tel" name="tel" id="tel" value="' . $user[0]['tel'] . '" >';
     $content .= '<div style="display: flex; gap: 1rem;">';
     $content .= '<div><input type="radio" name="civilite" value="0" id="celibataire" ' . (($user[0]['civilite'] == 0) ? 'checked' : '') . ' required> <label for="celibataire">Célibataire</label></div>';
     $content .= '<div><input type="radio" name="civilite" value="1" id="marie" ' . (($user[0]['civilite'] == 1) ? 'checked' : '') . ' required> <label for="marie">Marié(e)</label></div>';
