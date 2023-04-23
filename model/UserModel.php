@@ -25,6 +25,13 @@ function get_user($id)
     return $user;
 }
 
+function create($user)
+{
+    $db = connect_db();
+    $sql = "INSERT INTO users (nom, prenom, age, sex, civilite,email,adresse,tel)
+    VALUES ($user),";
+}
+
 // Utilities
 function format_civilit_and_sex($row)
 {
