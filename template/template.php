@@ -6,6 +6,7 @@
 </head>
 
 <body>
+    <?php include "navBar.php" ?>
     <?php echo $content; ?>
 </body>
 
