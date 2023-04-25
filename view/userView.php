@@ -103,7 +103,7 @@ function msg_user_create($user)
 {
     $title = "Create user";
     $content = "<div>";
-    $content .= '<p>' . $user["nom"] . ' ' . $user["prenom"] . ' à été créer</p>';
+    $content .= '<p>' . $user["nom"] . ' ' . $user["prenom"] . ' a bien été ajouté(e) à la liste des utilisateurs.</p>';
     $content .= "</div>";
     include './template/template.php';
 }

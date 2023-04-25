@@ -36,8 +36,8 @@ if ($uri == "/create") {
     if (isset($_POST)) {
         if ($_POST["action"] == "create") {
             show_msg_user_created($_POST);
-            // Redirection apres 5
-            header("Refresh:5; url=/list");
+            // Redirection apres 8
+            header("Refresh:8; url=/list");
         }
     }
     form_create();
