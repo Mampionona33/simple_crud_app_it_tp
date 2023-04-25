@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php include "navBar.php" ?>
+    <?php include_once "navBar.php" ?>
     <?php echo $content; ?>
     <script src="../dist/bundle.js"></script>
 </body>

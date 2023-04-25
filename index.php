@@ -6,9 +6,6 @@ if ($uri == "/" || $uri == "/index.php" || $uri == "/list") {
     header('Content-Type: text/html; charset=utf-8');
 
     if (isset($_POST)) {
-        if ($_POST["action"] == "create") {
-            create_user($_POST);
-        }
         if ($_POST['deleted_ids']) {
             delete_users($_POST["deleted_ids"]);
         }
@@ -35,6 +32,14 @@ if ($uri == "/details/") {
 
 if ($uri == "/create") {
     header('Content-Type: text/html; charset=utf-8');
+
+    if (isset($_POST)) {
+        if ($_POST["action"] == "create") {
+            show_msg_user_created($_POST);
+            // Redirection apres 5
+            header("Refresh:5; url=/list");
+        }
+    }
     form_create();
 }
 

@@ -7,7 +7,6 @@ function show_list()
 {
     // Récupération des utilisateurs depuis la base de données
     $users = get_users();
-
     // Affichage de la liste des utilisateurs dans la vue
     user_table($users);
 }
@@ -22,4 +21,10 @@ function show_form_edit($id)
 {
     $user =  get_user($id);
     form_edit($user);
+}
+
+function show_msg_user_created($user)
+{
+    $created_user = create_user($user);
+    msg_user_create($created_user);
 }

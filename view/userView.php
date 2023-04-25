@@ -46,7 +46,7 @@ function form_create()
 {
     $title = "Create user";
     $content = "<div>";
-    $content .= '<form method="post" action="/" style="display: flex; flex-direction: column; gap: 1rem;">';
+    $content .= '<form method="post" action="/create" style="display: flex; flex-direction: column; gap: 1rem;">';
     $content .= '<input type="hidden" name="action" value="create">';
     $content .= '<label for="nom">Nom</label><input type="text" placeholder="Nom" required name="nom" id="nom" >';
     $content .= '<label for="prenom">Prénom</label><input type="text" placeholder="Prénom" required name="prenom" id="prenom" >';
@@ -95,6 +95,15 @@ function form_edit($user)
     $content .= '<input type="reset" value="Recommencer">';
     $content .= '<input type="submit" value="Modifier">';
     $content .= "</form>";
+    $content .= "</div>";
+    include './template/template.php';
+}
+
+function msg_user_create($user)
+{
+    $title = "Create user";
+    $content = "<div>";
+    $content .= '<p>' . $user["nom"] . ' ' . $user["prenom"] . ' à été créer</p>';
     $content .= "</div>";
     include './template/template.php';
 }

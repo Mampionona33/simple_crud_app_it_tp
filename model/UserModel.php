@@ -42,9 +42,7 @@ function create_user($user)
     // Exécuter la requête SQL
     try {
         $stmt->execute();
-        // Rediriger vers la page d'accueil
-        header("Location: .");
-        exit();
+        return $user;
     } catch (PDOException $e) {
         echo "Erreur lors de la création de l'utilisateur: " . $e->getMessage();
         exit();
@@ -107,12 +105,6 @@ function update_user($user)
         echo "Error: " . $e->getMessage();
     }
 }
-
-
-
-
-
-
 
 
 // Utilities
