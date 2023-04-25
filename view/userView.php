@@ -5,14 +5,13 @@ function user_table($users)
     $title = "List users";
     $content = '<form id="tableForm" method="post" action="/">';
     $content .= "<table>";
-    $content .= "<tr><th><input type=\"checkbox\" name=\"selected_ids\" id=\"selected_ids\"  ></th><th>Noms</th><th>Prénoms</th><th>Age</th><th>Actions</th> </tr>";
+    $content .= "<tr><th><input type=\"checkbox\" name=\"selected_ids\" id=\"selected_ids\"  ></th><th>Noms</th><th>Prénoms</th><th>Actions</th> </tr>";
 
     foreach ($users as $user) {
         $content .= "<tr>";
         $content .= '<td><input title="select_user" placeholder="checkbox" type="checkbox" name="deleted_ids[]" value="' . $user["id"] . '"></td>';
         $content .= "<td>" . $user['nom'] . "</td>";
         $content .= "<td>" . $user['prenom'] . "</td>";
-        $content .= "<td>" . $user['age'] . "</td>";
         $content .= "<td>";
         $content .= '<input type="button" name="delete_one" id="btn_delete_one' . $user["id"] . '" value="Delete" data-id="' . $user["id"] . '" data-user="' . $user["nom"] . " " . $user["prenom"] . '">';
         $content .= '<a href="/details/?id=' . $user['id'] . '">Details</a>';
