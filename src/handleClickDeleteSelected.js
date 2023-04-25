@@ -1,3 +1,5 @@
+import swal from "sweetalert2";
+
 export const handleClickDeleteSelected = () => {
   const delete_selected = document.getElementById("delete_selected");
   const deleted_ids = document.querySelectorAll('input[name="deleted_ids[]"]');
@@ -15,20 +17,32 @@ export const handleClickDeleteSelected = () => {
       });
 
       if (listSelectedId.length > 0) {
-        const confirmDelete = confirm(
-          "Êtes-vous sûr de vouloir supprimer ces éléments ?"
-        );
-
-        if (confirmDelete) {
-          // Suppression des champs cachés ajoutés
-          document
-            .querySelectorAll('input[name="delete_id"]')
-            .forEach((input) => input.remove());
-          // Soumission du formulaire
-          tableForm.submit();
-        }
+        swal
+          .fire({
+            title: "Êtes-vous sûr ?",
+            text: "Vous êtes sur le point de supprimer ces éléments",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Oui, supprimer",
+            cancelButtonText: "Annuler",
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+              // Suppression des champs cachés ajoutés
+              document
+                .querySelectorAll('input[name="delete_id"]')
+                .forEach((input) => input.remove());
+              // Soumission du formulaire
+              tableForm.submit();
+            }
+          });
       } else {
-        alert("Veuillez sélectionner au moins un élément à supprimer.");
+        swal.fire({
+          title: "Erreur",
+          text: "Veuillez sélectionner au moins un élément à supprimer",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
       }
     });
 };

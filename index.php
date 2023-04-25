@@ -21,6 +21,11 @@ if ($uri == "/" || $uri == "/index.php" || $uri == "/list") {
 }
 
 if ($uri == "/details/") {
+
+    if (isset($_POST['action']) && $_POST["action"] == "edit") {
+        update_user($_POST);
+    }
+
     if (isset($_GET['id'])) {
         header('Content-Type: text/html; charset=utf-8');
         $id = $_GET["id"];

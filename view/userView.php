@@ -78,11 +78,12 @@ function form_edit($user)
     $content = "<div>";
     $content .= '<form method="post" action="/details/?id=' . $user[0]['id'] . '" style="display: flex; flex-direction: column; gap: 1rem;">';
     $content .= '<input type="hidden" name="action" value="edit">';
+    $content .= '<input type="hidden" name="id" value="' . $user[0]["id"] . '">';
     $content .= '<label for="nom">Nom:</label><input type="text" placeholder="Nom" required name="nom" id="nom" value="' . $user[0]['nom'] . '" >';
     $content .= '<label for="prenom">Prénom:</label><input type="text" placeholder="Prénom" required name="prenom" id="prenom" value="' . $user[0]['prenom'] . '" >';
     $content .= '<label for="age">Age:</label><input type="number" min=0  placeholder="Age" required name="age" id="age" value="' . $user[0]['age'] . '" >';
     $content .= '<label for="email">Email:</label><input type="email" placeholder="Email" name="email" id="email" value="' . $user[0]['email'] . '" >';
-    $content .= '<label for="adress">Adresse:</label><input type="text" placeholder="Adresse" required name="adress" id="adress" value="' . $user[0]['adresse'] . '" >';
+    $content .= '<label for="adress">Adresse:</label><input type="text" placeholder="Adresse" required name="adresse" id="adresse" value="' . $user[0]['adresse'] . '" >';
     $content .= '<label for="tel">Téléphone:</label><input type="text" placeholder="Tel" name="tel" id="tel" value="' . $user[0]['tel'] . '" >';
     $content .= '<div style="display: flex; gap: 1rem;">';
     $content .= '<div><input type="radio" name="civilite" value="0" id="celibataire" ' . (($user[0]['civilite'] == 0) ? 'checked' : '') . ' required> <label for="celibataire">Célibataire</label></div>';
