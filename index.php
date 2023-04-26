@@ -36,14 +36,23 @@ if ($uri == "/create") {
     if (isset($_POST)) {
         if ($_POST["action"] == "create") {
             show_msg_user_created($_POST);
-            // Redirection apres 8
-            header("Refresh:8; url=/list");
+            // Redirection apres 5
+            header("Refresh:5; url=/list");
         }
     }
     form_create();
 }
 
 if ($uri == "/editUser/") {
+
+    if (isset($_POST)) {
+        if (preg_match_all("/edit/i", $_POST["action"]) && $_POST["id"]) {
+            show_msg_update_sucessfully($_POST);
+            // Redirection apres 5
+            header("Refresh:5; url=/details/?id=" . $_POST['id']);
+        }
+    }
+
     if (isset($_GET["id"])) {
         header('Content-Type: text/html; charset=utf-8');
         $id = $_GET["id"];

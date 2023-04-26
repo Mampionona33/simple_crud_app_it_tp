@@ -97,12 +97,11 @@ function update_user($user)
         $stmt->bindParam(':tel', $user['tel']);
         $stmt->bindParam(':id', $user['id'], PDO::PARAM_INT);
 
-
         $stmt->execute();
-        header('Location: ./?id=' . $user["id"]);
-        // return true;
+        return true;
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
+        return false;
     }
 }
 

@@ -75,7 +75,7 @@ function form_edit($user)
     $title = 'Edit User : ' . $user[0]["nom"];
     header('Content-Type: text/html; charset=utf-8');
     $content = "<div>";
-    $content .= '<form method="post" action="/details/?id=' . $user[0]['id'] . '" style="display: flex; flex-direction: column; gap: 1rem;">';
+    $content .= '<form method="post" action="/editUser/?id=' . $user[0]["id"] . '" style="display: flex; flex-direction: column; gap: 1rem;">';
     $content .= '<input type="hidden" name="action" value="edit">';
     $content .= '<input type="hidden" name="id" value="' . $user[0]["id"] . '">';
     $content .= '<label for="nom">Nom:</label><input type="text" placeholder="Nom" required name="nom" id="nom" value="' . $user[0]['nom'] . '" >';
@@ -101,9 +101,13 @@ function form_edit($user)
 
 function msg_user_create($user)
 {
-    $title = "Create user";
     $content = "<div>";
     $content .= '<p>' . $user["nom"] . ' ' . $user["prenom"] . ' a bien été ajouté(e) à la liste des utilisateurs.</p>';
     $content .= "</div>";
     include './template/template.php';
+}
+
+function msg_user_updated_successful()
+{
+    echo "<p>Les informations de l'utilisateur ont été mises à jour avec succès.</p>";
 }

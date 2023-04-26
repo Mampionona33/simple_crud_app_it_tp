@@ -28,3 +28,10 @@ function show_msg_user_created($user)
     $created_user = create_user($user);
     msg_user_create($created_user);
 }
+
+function show_msg_update_sucessfully($user)
+{
+    if (update_user($user)) {
+        msg_user_updated_successful();
+    }
+}
