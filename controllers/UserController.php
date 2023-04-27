@@ -35,3 +35,15 @@ function show_msg_update_sucessfully($user)
         msg_user_updated_successful();
     }
 }
+
+
+function show_pdf_list()
+{
+    ob_start();
+    $pdf_list = new FPDF();
+    $users = get_users();
+    if (count($users) > 0) {
+        return  pdf_list($users, $pdf_list);
+        ob_clean();
+    }
+}

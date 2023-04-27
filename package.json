@@ -36,6 +36,8 @@
     "webpack-cli": "^5.0.2"
   },
   "dependencies": {
+    "node-sass": "^8.0.0",
+    "postcss-loader": "^7.2.4",
     "sweetalert2": "^11.7.3"
   }
 }

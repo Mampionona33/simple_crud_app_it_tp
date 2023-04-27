@@ -105,6 +105,34 @@ function update_user($user)
     }
 }
 
+function pdf_list($users, $pdf_list)
+{
+    $pdf_list->AddPage();
+    $pdf_list->SetFont("Arial", "B", 12);
+    $pdf_list->SetRightMargin(20);
+
+    $height = 10;
+    $width = 95;
+
+    $x = $pdf_list->GetX();
+    $y = $pdf_list->GetY();
+
+    $pdf_list->SetFillColor(224, 235, 255);
+    $pdf_list->SetTextColor(0);
+    $pdf_list->SetFont('');
+    $pdf_list->Cell($width, $height, "Name", 1, 0, "C", true);
+    $pdf_list->Cell($width, $height, "Last Name", 1, 0, "C", true);
+    $pdf_list->Ln();
+
+    foreach ($users as $row) {
+        $pdf_list->Cell($width, $height, $row["nom"], 1, 0, "C", false);
+        $pdf_list->Cell($width, $height, $row["prenom"], 1, 0, "C", false);
+        $pdf_list->Ln();
+    }
+
+    $pdf_list->Output();
+}
+
 
 // Utilities
 function format_civilit_and_sex($row)
