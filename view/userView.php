@@ -3,7 +3,8 @@
 function user_table($users)
 {
     $title = "List users";
-    $content = '<form id="tableForm" method="post" action="/">';
+    $content = "<div class=\"container\" >";
+    $content .= '<form id="tableForm" method="post" action="/">';
     $content .= "<table>";
     $content .= "<tr><th><input type=\"checkbox\" name=\"selected_ids\" id=\"selected_ids\"  ></th><th>Noms</th><th>Prénoms</th><th>Actions</th> </tr>";
 
@@ -13,14 +14,18 @@ function user_table($users)
         $content .= "<td>" . $user['nom'] . "</td>";
         $content .= "<td>" . $user['prenom'] . "</td>";
         $content .= "<td>";
-        $content .= '<input type="button" name="delete_one" id="btn_delete_one' . $user["id"] . '" value="Delete" data-id="' . $user["id"] . '" data-user="' . $user["nom"] . " " . $user["prenom"] . '">';
-        $content .= '<a href="/details/?id=' . $user['id'] . '">Details</a>';
+        $content .= '<div class="cellContainer">';
+        $content .= '<button type="button" class="button danger" name="delete_one" id="btn_delete_one' . $user["id"] . '" data-id="' . $user["id"] . '" data-user="' . $user["nom"] . ' ' . $user["prenom"] . '"><span class="material-icons-outlined">delete_outline</span></button>';
+        // $content .= '<input type="button" name="delete_one" id="btn_delete_one' . $user["id"] . '" value="Delete" data-id="' . $user["id"] . '" data-user="' . $user["nom"] . " " . $user["prenom"] . '">';
+        $content .= '<div class="button" ><a class="" href="/details/?id=' . $user['id'] . '"><span class="material-icons-outlined">info</span></a></div>';
+        $content .= "</div>";
         $content .= "</td>";
         $content .= "</tr>";
     }
 
     $content .= "</table>";
     $content .= '</form>';
+    $content .= "</div>";
 
     // Inclusion du contenu dans le template
     include './template/template.php';
@@ -45,20 +50,38 @@ function user_detail($user)
 function form_create()
 {
     $title = "Create user";
-    $content = "<div>";
-    $content .= '<form method="post" action="/create" style="display: flex; flex-direction: column; gap: 1rem;">';
+    $content = '<div class="container">';
+    $content .= '<form class="formulaire" method="post" action="/create" style="display: flex; flex-direction: column; gap: 1rem;">';
     $content .= '<input type="hidden" name="action" value="create">';
-    $content .= '<label for="nom">Nom</label><input type="text" placeholder="Nom" required name="nom" id="nom" >';
-    $content .= '<label for="prenom">Prénom</label><input type="text" placeholder="Prénom" required name="prenom" id="prenom" >';
-    $content .= '<label for="age">Age</label><input type="number" min=0 placeholder="Age" required name="age" id="age" >';
-    $content .= '<label for="email">Email</label><input type="email" placeholder="Email" name="email" id="email" >';
-    $content .= '<label for="adress">Adresse</label><input type="text" placeholder="Adresse" required name="adress" id="adress" >';
-    $content .= '<label for="tel">Tel</label><input type="text" placeholder="Tel" name="tel" id="tel" >';
-    $content .= '<div style="display: flex; gap: 1rem;">';
-    $content .= '<div><input type="radio" name="civilite" value="0" id="celibataire" checked required> <label for="celibataire">Célibataire</label></div>';
-    $content .= '<div><input type="radio" name="civilite" value="1" id="marie"  required> <label for="marie">Marié(e)</label></div>';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="nom">Nom:</label>';
+    $content .= '<input type="text" placeholder="Nom" required name="nom" id="nom">';
     $content .= '</div>';
-    $content .= '<div style="display: flex; gap: 1rem;">';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="prenom">Prénom:</label>';
+    $content .= '<input type="text" placeholder="Prénom" required name="prenom" id="prenom">';
+    $content .= '</div>';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="age">Age:</label>';
+    $content .= '<input type="number" min=0 placeholder="Age" required name="age" id="age">';
+    $content .= '</div>';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="email">Email:</label>';
+    $content .= '<input type="email" placeholder="Email" name="email" id="email">';
+    $content .= '</div>';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="adresse">Adresse:</label>';
+    $content .= '<input type="text" placeholder="Adresse" required name="adresse" id="adresse">';
+    $content .= '</div>';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="tel">Tel:</label>';
+    $content .= '<input type="text" placeholder="Tel" name="tel" id="tel">';
+    $content .= '</div>';
+    $content .= '<div class="radio-group">';
+    $content .= '<div><input type="radio" name="civilite" value="0" id="celibataire" checked required> <label for="celibataire">Célibataire</label></div>';
+    $content .= '<div><input type="radio" name="civilite" value="1" id="marie" required> <label for="marie">Marié(e)</label></div>';
+    $content .= '</div>';
+    $content .= '<div class="radio-group">';
     $content .= '<div><input type="radio" name="sex" value="0" id="sex_femme" required> <label for="sex_femme">Femme</label></div>';
     $content .= '<div><input type="radio" name="sex" value="1" id="sex_homme" checked required> <label for="sex_homme">Homme</label></div>';
     $content .= '</div>';
@@ -66,7 +89,19 @@ function form_create()
     $content .= '<input type="submit" value="Créer" title="Créer un nouvel utilisateur">';
     $content .= "</form>";
     $content .= "</div>";
+
     include './template/template.php';
+}
+
+
+function msg_user_create($user)
+{
+    $content = '<div class="container" style="justify-content:center">';
+    $content .= '<div class="alert">';
+    $content .= '<p>' . $user["nom"] . ' ' . $user["prenom"] . ' a bien été ajouté(e) à la liste des utilisateurs.</p>';
+    $content .= "</div>";
+    $content .= "</div>";
+    include_once './template/template.php';
 }
 
 
@@ -99,13 +134,7 @@ function form_edit($user)
     include './template/template.php';
 }
 
-function msg_user_create($user)
-{
-    $content = "<div>";
-    $content .= '<p>' . $user["nom"] . ' ' . $user["prenom"] . ' a bien été ajouté(e) à la liste des utilisateurs.</p>';
-    $content .= "</div>";
-    include './template/template.php';
-}
+
 
 function msg_user_updated_successful()
 {
