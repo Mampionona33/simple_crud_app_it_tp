@@ -109,35 +109,60 @@ function msg_user_create($user)
 function form_edit($user)
 {
     $title = 'Edit User : ' . $user[0]["nom"];
-    header('Content-Type: text/html; charset=utf-8');
-    $content = "<div>";
-    $content .= '<form method="post" action="/editUser/?id=' . $user[0]["id"] . '" style="display: flex; flex-direction: column; gap: 1rem;">';
+    $content = '<div class="container">';
+    $content .= '<form class="formulaire" method="post" action="/editUser/?id=' . $user[0]["id"] . '" style="display: flex; flex-direction: column; gap: 1rem;">';
     $content .= '<input type="hidden" name="action" value="edit">';
     $content .= '<input type="hidden" name="id" value="' . $user[0]["id"] . '">';
-    $content .= '<label for="nom">Nom:</label><input type="text" placeholder="Nom" required name="nom" id="nom" value="' . $user[0]['nom'] . '" >';
-    $content .= '<label for="prenom">Prénom:</label><input type="text" placeholder="Prénom" required name="prenom" id="prenom" value="' . $user[0]['prenom'] . '" >';
-    $content .= '<label for="age">Age:</label><input type="number" min=0  placeholder="Age" required name="age" id="age" value="' . $user[0]['age'] . '" >';
-    $content .= '<label for="email">Email:</label><input type="email" placeholder="Email" name="email" id="email" value="' . $user[0]['email'] . '" >';
-    $content .= '<label for="adress">Adresse:</label><input type="text" placeholder="Adresse" required name="adresse" id="adresse" value="' . $user[0]['adresse'] . '" >';
-    $content .= '<label for="tel">Téléphone:</label><input type="text" placeholder="Tel" name="tel" id="tel" value="' . $user[0]['tel'] . '" >';
-    $content .= '<div style="display: flex; gap: 1rem;">';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="nom">Nom:</label>';
+    $content .= '<input type="text" placeholder="Nom" required name="nom" id="nom" value="' . $user[0]['nom'] . '">';
+    $content .= '</div>';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="prenom">Prénom:</label>';
+    $content .= '<input type="text" placeholder="Prénom" required name="prenom" id="prenom" value="' . $user[0]['prenom'] . '">';
+    $content .= '</div>';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="age">Age:</label>';
+    $content .= '<input type="number" min=0 placeholder="Age" required name="age" id="age" value="' . $user[0]['age'] . '">';
+    $content .= '</div>';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="email">Email:</label>';
+    $content .= '<input type="email" placeholder="Email" name="email" id="email" value="' . $user[0]['email'] . '">';
+    $content .= '</div>';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="adresse">Adresse:</label>';
+    $content .= '<input type="text" placeholder="Adresse" required name="adresse" id="adresse" value="' . $user[0]['adresse'] . '">';
+    $content .= '</div>';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="tel">Tel:</label>';
+    $content .= '<input type="text" placeholder="Tel" name="tel" id="tel" value="' . $user[0]['tel'] . '">';
+    $content .= '</div>';
+    $content .= '<div class="radio-group">';
     $content .= '<div><input type="radio" name="civilite" value="0" id="celibataire" ' . (($user[0]['civilite'] == 0) ? 'checked' : '') . ' required> <label for="celibataire">Célibataire</label></div>';
     $content .= '<div><input type="radio" name="civilite" value="1" id="marie" ' . (($user[0]['civilite'] == 1) ? 'checked' : '') . ' required> <label for="marie">Marié(e)</label></div>';
     $content .= '</div>';
-    $content .= '<div style="display: flex; gap: 1rem;">';
-    $content .= '<div><input type="radio" name="sex" value="0" id="sex_femme" ' . (($user[0]['sex'] == 0) ? 'checked' : '') . ' required> <label for="sex_femme">Femme</label></div>';
-    $content .= '<div><input type="radio" name="sex" value="1" id="sex_homme" ' . (($user[0]['sex'] == 1) ? 'checked' : '') . ' required> <label for="sex_homme">Homme</label></div>';
-    $content .= '</div>';
-    $content .= '<input type="reset" value="Recommencer">';
-    $content .= '<input type="submit" value="Modifier">';
-    $content .= "</form>";
-    $content .= "</div>";
-    include './template/template.php';
-}
+    $content .= '<div class="radio-group">';
+    $content .= '<div><input type="radio" name="sex" value="0" id="sex_femme" ' . (($user[0]['sex'] == 0) ? 'checked' : '') . ' required> <label for="sex_femme">Female</label></div>';
 
+    // Add the male gender option
+    $content .= '<div><input type="radio" name="sex" value="1" id="sex_homme" ' . (($user[0]['sex'] == 1) ? 'checked' : '') . ' required> <label for="sex_homme">Male</label></div>';
+
+    // Add the submit button
+    $content .= '<div><input type="submit" value="Save Changes"></div>';
+
+    $content .= '</form>';
+    include './template/template.php';
+    return $content;
+}
 
 
 function msg_user_updated_successful()
 {
-    echo "<p>Les informations de l'utilisateur ont été mises à jour avec succès.</p>";
+
+    $content = '<div class="container" style="justify-content:center">';
+    $content .= '<div class="alert">';
+    $content .= '<p>Les informations de l\'utilisateur ont été mises à jour avec succès.</p>';
+    $content .= "</div>";
+    $content .= "</div>";
+    include_once './template/template.php';
 }
