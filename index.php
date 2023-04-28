@@ -12,7 +12,10 @@ if ($uri == "/" || $uri == "/index.php" || $uri == "/list") {
 
     if (isset($_POST)) {
         if (isset($_POST['deleted_ids']) && $_POST['deleted_ids']) {
-            delete_users($_POST["deleted_ids"]);
+            if (delete_users($_POST["deleted_ids"])) {
+                msg_delete_selected_successful();
+                header("Refresh:4; url=/");
+            };
         }
         if (isset($_POST["delete_user_id"])) {
             delete_user($_POST["delete_user_id"]);

@@ -13,7 +13,7 @@
 <body>
     <?php include_once "navBar.php" ?>
     <?php echo $content; ?>
-    <script src="../dist/bundle.js"></script>
+    <script src="../dist/app-bundle.js"></script>
 </body>
 
 </html>
