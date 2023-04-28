@@ -1,6 +1,7 @@
 /*!***************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/global.scss ***!
   \***************************************************************************************************************************************************************************************/
+@charset "UTF-8";
 body {
   box-sizing: border-box;
   margin: 0;
@@ -54,6 +55,14 @@ a {
 }
 .button .material-icons-outlined {
   font-size: 1.3rem;
+}
+.button:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  transform: translateY(-2px); /* ajouter une translation verticale discrète */
+  transition: transform 0.2s ease-in-out; /* ajouter une transition */
+}
+.button :active {
+  cursor: pointer;
 }
 
 .container {
