@@ -35,7 +35,8 @@ function user_table($users)
 function user_detail($user)
 {
     $title = "Details sur " . $user[0]["prenom"];
-    $content = "<div>";
+    $content = '<div class="container" >';
+    $content .= '<div class="card" >';
     $content .= '<p>Nom: <span>' . $user[0]['nom'] . '</span></p>';
     $content .= '<p>Prènom: <span>' . $user[0]['prenom'] . '</span></p>';
     $content .= '<p>Civilité: <span>' . $user[0]['civilite'] . '</span></p>';
@@ -43,6 +44,7 @@ function user_detail($user)
     $content .= '<p>Age: <span>' . $user[0]['age'] . '</span></p>';
     $content .= '<p>Email: <span>' . $user[0]['email'] . '</span></p>';
     $content .= '<p>Tel: <span>' . $user[0]['tel'] . '</span></p>';
+    $content .= "</div>";
     $content .= "</div>";
     include './template/template.php';
 }
@@ -103,7 +105,6 @@ function msg_user_create($user)
     $content .= "</div>";
     include_once './template/template.php';
 }
-
 
 function form_edit($user)
 {
