@@ -55,7 +55,7 @@ function delete_users($users)
     try {
         $stmt = $db->prepare("DELETE FROM users WHERE id IN (" . implode(',', array_fill(0, count($users), '?')) . ")");
         $stmt->execute($users);
-        header("Location: .");
+        return true;
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

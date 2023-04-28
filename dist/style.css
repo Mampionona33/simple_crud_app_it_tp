@@ -67,11 +67,11 @@ a {
 
 .container {
   display: flex;
-  padding: 1rem;
   justify-content: center;
   align-items: center;
 }
 .container form {
+  margin: 1rem;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -127,6 +127,7 @@ tr:nth-child(odd) {
   justify-content: center;
   margin: 2rem;
   padding: 1rem;
+  width: -moz-fit-content;
   width: fit-content;
   color: #fff;
   border-radius: 5px;

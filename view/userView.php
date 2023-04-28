@@ -148,7 +148,7 @@ function form_edit($user)
     $content .= '<div><input type="radio" name="sex" value="1" id="sex_homme" ' . (($user[0]['sex'] == 1) ? 'checked' : '') . ' required> <label for="sex_homme">Male</label></div>';
 
     // Add the submit button
-    $content .= '<div><input type="submit" value="Save Changes"></div>';
+    $content .= '<div><input type="submit" value="Save"></div>';
 
     $content .= '</form>';
     include './template/template.php';
@@ -162,6 +162,16 @@ function msg_user_updated_successful()
     $content = '<div class="container" style="justify-content:center">';
     $content .= '<div class="alert">';
     $content .= '<p>Les informations de l\'utilisateur ont été mises à jour avec succès.</p>';
+    $content .= "</div>";
+    $content .= "</div>";
+    include_once './template/template.php';
+}
+
+function msg_delete_selected_successful()
+{
+    $content = '<div class="container" style="justify-content:center">';
+    $content .= '<div class="alert">';
+    $content .= '<p>Les éléments sélectionnés ont été supprimés de la liste avec succès..</p>';
     $content .= "</div>";
     $content .= "</div>";
     include_once './template/template.php';

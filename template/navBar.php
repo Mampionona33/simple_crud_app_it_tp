@@ -59,8 +59,13 @@
                     List
                 </a>
             </div>
-            <div class="button">
-                <a href="/editUser/<?php echo $id; ?>">Modifier</a>
+            <div>
+                <a class="button" href="/editUser/<?php echo $id; ?>">
+                    <span class="material-icons-outlined">
+                        edit
+                    </span>
+                    Modifier
+                </a>
             </div>
             <div>
                 <a class="button" href="/preview/<?php echo $id; ?>">Preview PDF</a>
@@ -68,10 +73,20 @@
         <?php } else if (strpos($_SERVER['REQUEST_URI'], '/editUser/') !== false) {
             $id = substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['REQUEST_URI'], '/') + 1); ?>
             <div>
-                <a class="button" href="/details/<?php echo $id; ?>">Retour au détail</a>
+                <a class="button" href="/details/<?php echo $id; ?>">
+                    <span class="material-icons-outlined">
+                        info
+                    </span>
+                    details
+                </a>
             </div>
             <div>
-                <a class="button" href="/list">Retour à la liste</a>
+                <a class="button" href="/list">
+                    <span class="material-icons-outlined">
+                        list_alt
+                    </span>
+                    List
+                </a>
             </div>
             <div>
                 <a class="button" href="/preview/<?php echo $id; ?>">Preview PDF</a>
