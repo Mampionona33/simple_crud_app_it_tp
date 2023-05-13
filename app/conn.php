@@ -2,9 +2,9 @@
 function connect_db()
 {
     $user = "root";
-    $pass = "";
+    $pass = "password";
     $dbname = "myproject";
-    $host = "127.0.0.1";
+    $host = "mysql";
     $dsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
     try {
         $conn = new PDO($dsn, $user, $pass);
