@@ -3,24 +3,27 @@
 function user_table($users)
 {
     $title = "List users";
-    $content = "<div class=\"container\" >";
+    $content = "<div class=\"container\">";
     $content .= '<form id="tableForm" method="post" action="/">';
     $content .= "<table>";
-    $content .= "<tr><th><input type=\"checkbox\" name=\"selected_ids\" id=\"selected_ids\"  ></th><th>Noms</th><th>Prénoms</th><th>Actions</th> </tr>";
+    $content .= "<tr><th><input type=\"checkbox\" name=\"selected_ids\" id=\"selected_ids\"></th><th>Noms</th><th>Prénoms</th><th>Actions</th> </tr>";
 
-    foreach ($users as $user) {
-        $content .= "<tr>";
-        $content .= '<td><input title="select_user" placeholder="checkbox" type="checkbox" name="deleted_ids[]" value="' . $user["id"] . '"></td>';
-        $content .= "<td>" . $user['nom'] . "</td>";
-        $content .= "<td>" . $user['prenom'] . "</td>";
-        $content .= "<td>";
-        $content .= '<div class="cellContainer">';
-        $content .= '<button type="button" class="button danger" name="delete_one" id="btn_delete_one' . $user["id"] . '" data-id="' . $user["id"] . '" data-user="' . $user["nom"] . ' ' . $user["prenom"] . '"><span class="material-icons-outlined">delete_outline</span></button>';
-        // $content .= '<input type="button" name="delete_one" id="btn_delete_one' . $user["id"] . '" value="Delete" data-id="' . $user["id"] . '" data-user="' . $user["nom"] . " " . $user["prenom"] . '">';
-        $content .= '<div class="button" ><a class="" href="/details/?id=' . $user['id'] . '"><span class="material-icons-outlined">info</span></a></div>';
-        $content .= "</div>";
-        $content .= "</td>";
-        $content .= "</tr>";
+    if (empty($users)) {
+        $content .= "<tr><td colspan='4'>No data found.</td></tr>";
+    } else {
+        foreach ($users as $user) {
+            $content .= "<tr>";
+            $content .= '<td><input title="select_user" placeholder="checkbox" type="checkbox" name="deleted_ids[]" value="' . $user["id"] . '"></td>';
+            $content .= "<td>" . $user['nom'] . "</td>";
+            $content .= "<td>" . $user['prenom'] . "</td>";
+            $content .= "<td>";
+            $content .= '<div class="cellContainer">';
+            $content .= '<button type="button" class="button danger" name="delete_one" id="btn_delete_one' . $user["id"] . '" data-id="' . $user["id"] . '" data-user="' . $user["nom"] . ' ' . $user["prenom"] . '"><span class="material-icons-outlined">delete_outline</span></button>';
+            $content .= '<div class="button" ><a class="" href="/details/?id=' . $user['id'] . '"><span class="material-icons-outlined">info</span></a></div>';
+            $content .= "</div>";
+            $content .= "</td>";
+            $content .= "</tr>";
+        }
     }
 
     $content .= "</table>";
@@ -30,6 +33,7 @@ function user_table($users)
     // Inclusion du contenu dans le template
     include './template/template.php';
 }
+
 
 
 function user_detail($user)

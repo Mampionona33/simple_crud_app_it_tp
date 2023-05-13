@@ -36,6 +36,16 @@ a {
   }
 }
 
+.title1 {
+  font-size: 4rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  min-height: 82vh;
+}
+
 .button {
   cursor: pointer;
   background-color: #0d6efd;

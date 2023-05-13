@@ -11,7 +11,9 @@
 
 <body>
     <?php include_once "navBar.php" ?>
-    <?php echo $content; ?>
+    <div class="container">
+        <?php echo $content; ?>
+    </div>
     <script src="../dist/app-bundle.js"></script>
 </body>
 

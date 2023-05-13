@@ -1,6 +1,26 @@
 <?php
 require "./conn.php";
 
+function create_table_users()
+{
+    $db = connect_db();
+
+    $sql = "CREATE TABLE IF NOT EXISTS users (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(30) NOT NULL,
+    prenom VARCHAR(30) NOT NULL,
+    age INT(3) NOT NULL,
+    sex BOOLEAN default 1,
+    civilite VARCHAR(30),
+    email VARCHAR(30),
+    adresse VARCHAR(30),
+    tel VARCHAR(30)
+    );";
+
+    $db->exec($sql);
+}
+
+
 function get_users()
 {
     $db = connect_db();
