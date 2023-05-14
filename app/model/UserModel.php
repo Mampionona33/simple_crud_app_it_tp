@@ -11,7 +11,7 @@ function create_table_users()
     prenom VARCHAR(30) NOT NULL,
     age INT(3) NOT NULL,
     sex BOOLEAN default 1,
-    civilite VARCHAR(30),
+    civilite VARCHAR(30) NOT NULL,
     email VARCHAR(30),
     adresse VARCHAR(30),
     tel VARCHAR(30)

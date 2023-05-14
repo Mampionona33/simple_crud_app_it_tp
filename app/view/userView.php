@@ -83,9 +83,14 @@ function form_create()
     $content .= '<label for="tel">Tel:</label>';
     $content .= '<input type="text" placeholder="Tel" name="tel" id="tel">';
     $content .= '</div>';
-    $content .= '<div class="radio-group">';
-    $content .= '<div><input type="radio" name="civilite" value="0" id="celibataire" checked required> <label for="celibataire">Célibataire</label></div>';
-    $content .= '<div><input type="radio" name="civilite" value="1" id="marie" required> <label for="marie">Marié(e)</label></div>';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="civilite">Civilité:</label>';
+    $content .= '<select name="civilite" id="civilite" required>';
+    $content .= '<option value="">Choisir une option</option>';
+    $content .= '<option value="Mme">Madame</option>';
+    $content .= '<option value="Mr">Monsieur</option>';
+    $content .= '<option value="Mle">Mademoiselle</option>';
+    $content .= '</select>';
     $content .= '</div>';
     $content .= '<div class="radio-group">';
     $content .= '<div><input type="radio" name="sex" value="0" id="sex_femme" required> <label for="sex_femme">Femme</label></div>';
@@ -100,14 +105,16 @@ function form_create()
 }
 
 
+
 function msg_user_create($user)
 {
+    $title = "Create user";
     $content = '<div class="container" style="justify-content:center">';
     $content .= '<div class="alert">';
     $content .= '<p>' . $user["nom"] . ' ' . $user["prenom"] . ' a bien été ajouté(e) à la liste des utilisateurs.</p>';
     $content .= "</div>";
     $content .= "</div>";
-    include_once './template/template.php';
+    // include_once './template/template.php';
 }
 
 function form_edit($user)
