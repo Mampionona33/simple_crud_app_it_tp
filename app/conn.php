@@ -3,7 +3,7 @@ function connect_db()
 {
     $user = "root";
     $pass = "password";
-    $dbname = "mydata";
+    $dbname = "myproject";
     $host = "mysql";
     $dsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
     try {
