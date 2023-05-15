@@ -12,7 +12,7 @@ switch ($uri) {
     case '/':
     case '/list':
     case 'index.php':
-        header('Content-Type: text/html; charset=utf-8');
+        // header('Content-Type: text/html; charset=utf-8');
 
         if (isset($_POST)) {
             if (isset($_POST['deleted_ids']) && $_POST['deleted_ids']) {
@@ -41,8 +41,7 @@ switch ($uri) {
         break;
 
     case "/create":
-        header('Content-Type: text/html; charset=utf-8');
-
+        // header('Content-Type: text/html; charset=utf-8');
         if (isset($_POST)) {
             if (isset($_POST["action"]) &&  $_POST["action"] == "create") {
                 show_msg_user_created($_POST);
