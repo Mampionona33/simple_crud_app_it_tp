@@ -92,10 +92,10 @@ function form_create()
     $content .= '<option value="Mle">Mademoiselle</option>';
     $content .= '</select>';
     $content .= '</div>';
-    $content .= '<div class="radio-group">';
-    $content .= '<div><input type="radio" name="sex" value="0" id="sex_femme" required> <label for="sex_femme">Femme</label></div>';
-    $content .= '<div><input type="radio" name="sex" value="1" id="sex_homme" checked required> <label for="sex_homme">Homme</label></div>';
-    $content .= '</div>';
+    // $content .= '<div class="radio-group">';
+    // $content .= '<div><input type="radio" name="sex" value="0" id="sex_femme" required> <label for="sex_femme">Femme</label></div>';
+    // $content .= '<div><input type="radio" name="sex" value="1" id="sex_homme" checked required> <label for="sex_homme">Homme</label></div>';
+    // $content .= '</div>';
     $content .= '<input type="reset" value="Recommencer">';
     $content .= '<input type="submit" value="Créer" title="Créer un nouvel utilisateur">';
     $content .= "</form>";

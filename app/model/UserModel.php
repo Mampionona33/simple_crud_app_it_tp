@@ -1,4 +1,6 @@
 <?php
+require_once "./lib/get_data.php";
+require_once "./lib/create_data.php";
 // require "./conn.php";
 
 function create_table_users()
@@ -9,76 +11,41 @@ function create_table_users()
     nom VARCHAR(30) NOT NULL,
     prenom VARCHAR(30) NOT NULL,
     age INT(3) NOT NULL,
-    sex BOOLEAN default 1,
     civilite VARCHAR(30) NOT NULL,
     email VARCHAR(30),
     adresse VARCHAR(30),
     tel VARCHAR(30)
     ";
     create_table("users", $sql_users_col);
-    // $db = connect_db();
-
-    // $sql = "CREATE TABLE IF NOT EXISTS users (
-    // id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    // nom VARCHAR(30) NOT NULL,
-    // prenom VARCHAR(30) NOT NULL,
-    // age INT(3) NOT NULL,
-    // sex BOOLEAN default 1,
-    // civilite VARCHAR(30) NOT NULL,
-    // email VARCHAR(30),
-    // adresse VARCHAR(30),
-    // tel VARCHAR(30)
-    // );";
-
-    // $db->exec($sql);
 }
 
 function get_users()
 {
-    $db = connect_db();
     $users = array();
-    $sql = "SELECT * FROM users";
-    foreach ($db->query($sql) as $row) {
-        $out =   format_civilit_and_sex($row);
-        array_push($users, $out);
+    $data = get_data("users", null);
+    foreach ($data as $row) {
+        array_push($users, $row);
     }
     return $users;
 }
 
 function get_user($id)
 {
-    $db = connect_db();
-    $sql = "SELECT * FROM users WHERE id=$id";
     $user = [];
-    foreach ($db->query($sql) as $row) {
-        $out = format_civilit_and_sex($row);
-        array_push($user, $out);
+    $query = "WHERE id=$id";
+    $data = get_data("users", $query);
+    foreach ($data as $row) {
+        array_push($user, $row);
     }
     return $user;
 }
 
 function create_user($user)
 {
-    $db = connect_db();
-    $stmt = $db->prepare("INSERT INTO users (nom, prenom, age, sex, civilite, email, adresse, tel) 
-                          VALUES (:nom, :prenom, :age, :sex, :civilite, :email, :adresse, :tel)");
-    $stmt->bindParam(':nom', $user['nom']);
-    $stmt->bindParam(':prenom', $user['prenom']);
-    $stmt->bindParam(':age', $user['age'], PDO::PARAM_INT);
-    $stmt->bindParam(':sex', $user['sex'], PDO::PARAM_INT);
-    $stmt->bindParam(':civilite', $user['civilite'], PDO::PARAM_INT);
-    $stmt->bindParam(':email', $user['email']);
-    $stmt->bindParam(':adresse', $user['adresse']);
-    $stmt->bindParam(':tel', $user['tel']);
-
-    // Exécuter la requête SQL
-    try {
-        $stmt->execute();
-        return $user;
-    } catch (PDOException $e) {
-        echo "Erreur lors de la création de l'utilisateur: " . $e->getMessage();
-        exit();
-    }
+    $query = array($user);
+    // Remove action from the query
+    unset($query[0]["action"]);
+    create_data("users", $query[0]);
 }
 
 function delete_users($users)

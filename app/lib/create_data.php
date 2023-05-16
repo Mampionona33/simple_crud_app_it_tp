@@ -10,7 +10,7 @@ function create_data($nom_table, $data)
     $stmt = $db->prepare($sql);
 
     foreach ($data as $key => $value) {
-        $stmt->bindParam(":$key", $value);
+        $stmt->bindValue(":$key", $value);
     }
 
     try {
