@@ -12,7 +12,8 @@
 <body>
     <?php include_once "navBar.php" ?>
     <div class="container">
-        <?php echo $content; ?>
+        <?php echo isset($message) ? $message : null ?>
+        <?php echo isset($content) ? $content : null ?>
     </div>
     <script src="../dist/app-bundle.js"></script>
 </body>

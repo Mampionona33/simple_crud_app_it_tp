@@ -3,12 +3,21 @@
 require_once 'model/UserModel.php';
 require_once 'view/userView.php';
 
+
 function show_list()
 {
     // Récupération des utilisateurs depuis la base de données
     $users = get_users();
     // Affichage de la liste des utilisateurs dans la vue
-    user_table($users);
+    $title = user_table($users)[0];
+    $content = user_table($users)[1];
+    return [$title,$content];
+}
+
+
+function show_form_create(){
+    $title = form_create()[0];
+    $content = form_create()[1];
 }
 
 function show_details($id)
@@ -26,7 +35,7 @@ function show_form_edit($id)
 function show_msg_user_created($user)
 {
     $created_user = create_user($user);
-    msg_user_create($created_user);
+    return msg_user_create($created_user);
 }
 
 function show_msg_update_sucessfully($user)
@@ -47,3 +56,4 @@ function show_pdf_list()
         ob_clean();
     }
 }
+

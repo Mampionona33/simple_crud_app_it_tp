@@ -5,6 +5,8 @@ ini_set('display_errors', '1');
 require_once "./controllers/UserController.php";
 require_once "./model/UserModel.php";
 require_once "./conn.php";
+
+
 create_table_users();
 
 $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
@@ -27,7 +29,9 @@ switch ($uri) {
             }
         }
 
-        show_list();
+        $title = show_list()[0];
+        $content = show_list()[1];
+        require_once "./template/template.php";
         break;
     case "/details/":
         if (isset($_POST['action']) && $_POST["action"] == "edit") {
@@ -42,15 +46,18 @@ switch ($uri) {
         break;
 
     case "/create":
-        // header('Content-Type: text/html; charset=utf-8');
         if (isset($_POST)) {
             if (isset($_POST["action"]) &&  $_POST["action"] == "create") {
-                show_msg_user_created($_POST);
-                // Redirection apres 5
-                header("Refresh:5; url=/list");
+                $message = show_msg_user_created($_POST);
+                if($message){
+                    // Redirection après 5 secondes
+                    header("Refresh:5; url=/list");
+                }
             }
         }
-        form_create();
+        $title = form_create()[0];
+        $content = form_create()[1];
+        require_once "./template/template.php";
         break;
 
     case "/editUser/":

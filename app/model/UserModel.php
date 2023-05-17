@@ -45,7 +45,10 @@ function create_user($user)
     $query = array($user);
     // Remove action from the query
     unset($query[0]["action"]);
-    create_data("users", $query[0]);
+   $created_user = create_data("users", $query[0]);
+   if($created_user){
+    return $created_user;
+   }
 }
 
 function delete_users($users)
