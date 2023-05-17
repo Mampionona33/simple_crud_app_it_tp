@@ -1,7 +1,7 @@
 <?php
 require_once "./lib/get_data.php";
 require_once "./lib/create_data.php";
-// require "./conn.php";
+require_once "./lib/update_data.php";
 
 function create_table_users()
 {
@@ -105,6 +105,8 @@ function update_user($user)
         echo "Error: " . $e->getMessage();
         return false;
     }
+
+
 }
 
 function pdf_list($users, $pdf_list)

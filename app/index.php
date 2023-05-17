@@ -72,7 +72,9 @@ switch ($uri) {
         if (isset($_GET["id"])) {
             header('Content-Type: text/html; charset=utf-8');
             $id = $_GET["id"];
-            show_form_edit($id);
+            $title = show_form_edit($id)[0];
+            $content = show_form_edit($id)[1];
+            require_once "./template/template.php";
         }
         break;
 

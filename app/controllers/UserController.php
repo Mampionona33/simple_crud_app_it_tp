@@ -29,7 +29,10 @@ function show_details($id)
 function show_form_edit($id)
 {
     $user =  get_user($id);
-    form_edit($user);
+    $title = form_edit($user)[0];
+    $content = form_edit($user)[1];
+    
+    return [$title,$content];
 }
 
 function show_msg_user_created($user)

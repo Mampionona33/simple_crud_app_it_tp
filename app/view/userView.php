@@ -38,12 +38,11 @@ function user_table($users)
 function user_detail($user)
 {
     $title = "Details sur " . $user[0]["prenom"];
-    $content = '<div class="container" >';
+    $content = '<div >';
     $content .= '<div class="card" >';
     $content .= '<p>Nom: <span>' . $user[0]['nom'] . '</span></p>';
     $content .= '<p>Prènom: <span>' . $user[0]['prenom'] . '</span></p>';
     $content .= '<p>Civilité: <span>' . $user[0]['civilite'] . '</span></p>';
-    $content .= '<p>Sex: <span>' . $user[0]['sex'] . '</span></p>';
     $content .= '<p>Age: <span>' . $user[0]['age'] . '</span></p>';
     $content .= '<p>Email: <span>' . $user[0]['email'] . '</span></p>';
     $content .= '<p>Tel: <span>' . $user[0]['tel'] . '</span></p>';
@@ -142,23 +141,23 @@ function form_edit($user)
     $content .= '<label for="tel">Tel:</label>';
     $content .= '<input type="text" placeholder="Tel" name="tel" id="tel" value="' . $user[0]['tel'] . '">';
     $content .= '</div>';
-    $content .= '<div class="radio-group">';
-    $content .= '<div><input type="radio" name="civilite" value="0" id="celibataire" ' . (($user[0]['civilite'] == 0) ? 'checked' : '') . ' required> <label for="celibataire">Célibataire</label></div>';
-    $content .= '<div><input type="radio" name="civilite" value="1" id="marie" ' . (($user[0]['civilite'] == 1) ? 'checked' : '') . ' required> <label for="marie">Marié(e)</label></div>';
+    $content .= '<div class="input-group">';
+    $content .= '<label for="civilite">Civilité:</label>';
+    $content .= '<select name="civilite" id="civilite" required>';
+    $content .= '<option value="">Choisir une option</option>';
+    $content .= '<option value="Mme" ' . ($user[0]['civilite'] == 'Mme' ? 'selected' : '') . '>Madame</option>';
+    $content .= '<option value="Mr" ' . ($user[0]['civilite'] == 'Mr' ? 'selected' : '') . '>Monsieur</option>';
+    $content .= '<option value="Mle" ' . ($user[0]['civilite'] == 'Mle' ? 'selected' : '') . '>Mademoiselle</option>';
+    $content .= '</select>';
     $content .= '</div>';
-    $content .= '<div class="radio-group">';
-    $content .= '<div><input type="radio" name="sex" value="0" id="sex_femme" ' . (($user[0]['sex'] == 0) ? 'checked' : '') . ' required> <label for="sex_femme">Female</label></div>';
+    $content .= '<input type="reset" value="Recommencer">';
+    $content .= '<input type="submit" value="Save" title="Enregistrer les modifications">';
+    $content .= "</form>";
+    $content .= "</div>";
 
-    // Add the male gender option
-    $content .= '<div><input type="radio" name="sex" value="1" id="sex_homme" ' . (($user[0]['sex'] == 1) ? 'checked' : '') . ' required> <label for="sex_homme">Male</label></div>';
-
-    // Add the submit button
-    $content .= '<div><input type="submit" value="Save"></div>';
-
-    $content .= '</form>';
-    include './template/template.php';
-    return $content;
+    return [$title, $content];
 }
+
 
 
 function msg_user_updated_successful()
