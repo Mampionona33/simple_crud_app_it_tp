@@ -11,6 +11,7 @@ create_table_users();
 
 $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
+
 switch ($uri) {
     case '/':
     case '/list':
@@ -28,6 +29,9 @@ switch ($uri) {
                 $message = show_msg_delete_user($_POST["delete_user_id"]);
                 header("Refresh:3; url=/");
             }
+        }
+
+        if (isset($_GET)) {
         }
 
         $title = show_list()[0];

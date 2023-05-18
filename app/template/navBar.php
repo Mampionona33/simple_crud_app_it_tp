@@ -1,9 +1,10 @@
 <nav>
     <div class="navbar">
-        <?php if ($_SERVER['REQUEST_URI'] === '/list' || $_SERVER['REQUEST_URI'] === '/') { ?>
+        <?php if ($_SERVER['REQUEST_URI'] === '/list' || $_SERVER['REQUEST_URI'] === '/' || (isset($_GET['find']))) { ?>
+
             <div class="left">
-                <form action="/search" method="GET">
-                    <input type="text" name="query" placeholder="Rechercher">
+                <form action="/" method="GET">
+                    <input type="text" name="find" placeholder="Rechercher">
                     <button class="button" type="submit">
                         <span class="material-icons-outlined">
                             search
