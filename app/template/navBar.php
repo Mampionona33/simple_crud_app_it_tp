@@ -15,7 +15,7 @@
             <div>
                 <a class="button right" href="/create">
                     <span class="material-icons-outlined">add_circle_outline</span>
-                    Ajouter
+                    nouveau
                 </a>
             </div>
             <div>

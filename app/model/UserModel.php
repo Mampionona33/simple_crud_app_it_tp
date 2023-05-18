@@ -34,8 +34,6 @@ function get_users($filter = null)
     return $users;
 }
 
-
-
 function get_user($id)
 {
     $user = [];
@@ -84,33 +82,12 @@ function delete_user($user)
 
 function update_user($user)
 {
-
-    $db = connect_db();
-    try {
-        $set_clause = '';
-        foreach ($user as $key => $value) {
-            if ($key !== 'id' && $key !== "action") {
-                $set_clause .= "{$key}=:$key,";
-            }
-        }
-        $set_clause = rtrim($set_clause, ','); // pour enlever la virgule à la fin
-        $stmt = $db->prepare("UPDATE users SET {$set_clause} WHERE id=:id");
-
-        $stmt->bindParam(':nom', $user['nom']);
-        $stmt->bindParam(':prenom', $user['prenom']);
-        $stmt->bindParam(':age', $user['age'], PDO::PARAM_INT);
-        $stmt->bindParam(':sex', $user['sex'], PDO::PARAM_INT);
-        $stmt->bindParam(':civilite', $user['civilite'], PDO::PARAM_INT);
-        $stmt->bindParam(':email', $user['email']);
-        $stmt->bindParam(':adresse', $user['adresse']);
-        $stmt->bindParam(':tel', $user['tel']);
-        $stmt->bindParam(':id', $user['id'], PDO::PARAM_INT);
-
-        $stmt->execute();
+    $query = array($user);
+    // Remove action from the query
+    unset($query[0]["action"]);
+    $nom_table = "users";
+    if (update_data($nom_table, $query[0])) {
         return true;
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-        return false;
     }
 }
 

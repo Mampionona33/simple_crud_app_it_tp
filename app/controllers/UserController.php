@@ -49,7 +49,7 @@ function show_msg_user_created($user)
 function show_msg_update_sucessfully($user)
 {
     if (update_user($user)) {
-        msg_user_updated_successful();
+        return  msg_user_updated_successful();
     }
 }
 

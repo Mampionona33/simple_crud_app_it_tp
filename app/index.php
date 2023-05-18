@@ -87,7 +87,7 @@ switch ($uri) {
             if (isset($_POST["action"]) && preg_match_all("/edit/i", $_POST["action"]) && $_POST["id"]) {
                 $message = show_msg_update_sucessfully($_POST);
                 // Redirection apres 5
-                header("Refresh:5; url=/details/?id=" . $_POST['id']);
+                header("Refresh:3; url=/details/?id=" . $_POST['id']);
             }
         }
 
