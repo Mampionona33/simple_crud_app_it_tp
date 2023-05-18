@@ -21,9 +21,9 @@ switch ($uri) {
         if (isset($_POST)) {
             if (isset($_POST['deleted_ids']) && $_POST['deleted_ids']) {
                 if (delete_users($_POST["deleted_ids"])) {
-                    $message =  msg_delete_selected_successful();
+                    $message = msg_delete_selected_successful();
                     header("Refresh:3; url=/");
-                };
+                }
             }
             if (isset($_POST["delete_user_id"])) {
                 if (show_msg_delete_user($_POST["delete_user_id"])) {
@@ -35,19 +35,35 @@ switch ($uri) {
 
         if (isset($_GET)) {
             if (isset($_GET["find"])) {
-                if (strlen($_GET["find"]) > 0) {
-                    $title = show_list($_GET["find"])[0];
-                    $content = show_list($_GET["find"])[1];
+                $find = $_GET["find"];
+                $age_min = isset($_GET["age_min"]) ? $_GET["age_min"] : null;
+                $age_max = isset($_GET["age_max"]) ? $_GET["age_max"] : null;
+                if (strlen($find) > 0 || $age_min !== null || $age_max !== null) {
+                    // var_dump($age_max, $age_min);
+                    list($title, $content) = show_list($find, $age_min, $age_max);
                 } else {
-                    header("Location: /");
+                    if ($age_min !== null && $age_max !== null && strlen($age_min) > 0 && strlen($age_max) > 0) {
+                        if ($age_min > $age_max) {
+                            $erreur = "L'âge min ne doit pas être supérieur à l'âge max";
+                            header("Refresh:3; url=/");
+                            exit;
+                        } else {
+                            list($title, $content) = show_list($find, $age_min, $age_max);
+                        }
+                    } else {
+                        // Retourner à "/" si aucun argument de recherche n'est spécifié
+                        header("Location: /");
+                        exit;
+                    }
                 }
             } else {
-                $title = show_list()[0];
-                $content = show_list()[1];
+                list($title, $content) = show_list();
             }
         }
+
         require_once "./template/template.php";
         break;
+
     case "/details/":
         if (isset($_POST['action']) && $_POST["action"] == "edit") {
             update_user($_POST);

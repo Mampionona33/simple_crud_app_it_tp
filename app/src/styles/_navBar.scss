@@ -16,6 +16,9 @@
     input[type="text"]:first-child {
       width: calc((1em + 0.5rem) * 14);
     }
+    input[type="number"] {
+      width: calc((1em + 0.5rem) * 5);
+    }
   }
 }
 

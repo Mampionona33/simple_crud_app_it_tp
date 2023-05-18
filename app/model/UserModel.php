@@ -19,18 +19,35 @@ function create_table_users()
     create_table("users", $sql_users_col);
 }
 
-function get_users($filter = null)
+function get_users($filter = null, $age_min = null, $age_max = null)
 {
     $nom_table = "users";
     $users = array();
-    $query = null;
+    $query = "";
     if ($filter) {
-        $query = "WHERE $nom_table.nom LIKE '%$filter%' OR $nom_table.prenom LIKE '%$filter%' OR $nom_table.adresse LIKE '%$filter%'";
+        $searchConditions = [];
+        $searchParams = ['nom', 'prenom', 'adresse'];
+        foreach ($searchParams as $param) {
+            $searchConditions[] = "$nom_table.$param LIKE '%$filter%'";
+        }
+        $query .= "WHERE " . implode(" OR ", $searchConditions);
     }
+
+    if ($age_min !== null && $age_max !== null && $age_min !== '' && $age_max !== '') {
+        if ($query) {
+            $query .= " AND ";
+        } else {
+            $query = "WHERE ";
+        }
+        $query .= "$nom_table.age BETWEEN $age_min AND $age_max";
+    }
+
+    // var_dump($query);
     $data = get_data($nom_table, $query);
     foreach ($data as $row) {
         array_push($users, $row);
     }
+
     return $users;
 }
 

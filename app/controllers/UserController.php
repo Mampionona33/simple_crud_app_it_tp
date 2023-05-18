@@ -2,10 +2,10 @@
 require_once 'model/UserModel.php';
 require_once 'view/userView.php';
 
-function show_list($filtre = null)
+function show_list($filter = null, $age_min = null, $age_max = null)
 {
     // Récupération des utilisateurs depuis la base de données
-    $users = get_users($filtre);
+    $users = get_users($filter, $age_min, $age_max);
     // Affichage de la liste des utilisateurs dans la vue
     $title = user_table($users)[0];
     $content = user_table($users)[1];

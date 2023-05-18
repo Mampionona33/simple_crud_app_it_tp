@@ -19,8 +19,8 @@ function user_table($users)
             $content .= "<td>" . $user['prenom'] . "</td>";
             $content .= "<td>";
             $content .= '<div class="cellContainer">';
-            $content .= '<button type="button" class="button danger" name="delete_one" id="btn_delete_one' . $user["id"] . '" data-id="' . $user["id"] . '" data-user="' . $user["nom"] . ' ' . $user["prenom"] . '"><span class="material-icons-outlined">delete_outline</span></button>';
-            $content .= '<div class="button" ><a class="" href="/details/?id=' . $user['id'] . '"><span class="material-icons-outlined">info</span></a></div>';
+            $content .= '<button type="button" title="Supprimer l\'element" class="button danger" name="delete_one" id="btn_delete_one' . $user["id"] . '" data-id="' . $user["id"] . '" data-user="' . $user["nom"] . ' ' . $user["prenom"] . '"><span class="material-icons-outlined">delete_outline</span></button>';
+            $content .= '<div class="button" title="Details" ><a class="" href="/details/?id=' . $user['id'] . '"><span class="material-icons-outlined">info</span></a></div>';
             $content .= "</div>";
             $content .= "</td>";
             $content .= "</tr>";

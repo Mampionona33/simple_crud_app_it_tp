@@ -5,6 +5,8 @@
             <div class="left">
                 <form action="/" method="GET">
                     <input type="text" name="find" placeholder="Recherche avec nom ou prénom ou adresse">
+                    <input type="number" name="age_min" placeholder="Âge minimum">
+                    <input type="number" name="age_max" placeholder="Âge maximum">
                     <button class="button" type="submit">
                         <span class="material-icons-outlined">
                             search
@@ -13,7 +15,7 @@
                 </form>
             </div>
             <div>
-                <a class="button right" href="/create">
+                <a title="Créer un nouvel utilisateur" class="button right" href="/create">
                     <span class="material-icons-outlined">add_circle_outline</span>
                     nouveau
                 </a>
@@ -27,11 +29,11 @@
                 </a>
             </div>
             <div>
-                <button class="button danger right" id="delete_selected">
+                <button title="Supprimer la sélection" class="button danger right" id="delete_selected">
                     <span class="material-icons-outlined">
-                        playlist_remove
+                        delete
                     </span>
-                    Supprimer sélection
+                    supprimer
                 </button>
             </div>
             <div>
