@@ -15,17 +15,18 @@ switch ($uri) {
     case '/':
     case '/list':
     case 'index.php':
-        // header('Content-Type: text/html; charset=utf-8');
+        header('Content-Type: text/html; charset=utf-8');
 
         if (isset($_POST)) {
             if (isset($_POST['deleted_ids']) && $_POST['deleted_ids']) {
                 if (delete_users($_POST["deleted_ids"])) {
-                    msg_delete_selected_successful();
-                    header("Refresh:4; url=/");
+                    $message =  msg_delete_selected_successful();
+                    header("Refresh:3; url=/");
                 };
             }
             if (isset($_POST["delete_user_id"])) {
-                delete_user($_POST["delete_user_id"]);
+                $message = show_msg_delete_user($_POST["delete_user_id"]);
+                header("Refresh:3; url=/");
             }
         }
 
@@ -49,9 +50,9 @@ switch ($uri) {
         if (isset($_POST)) {
             if (isset($_POST["action"]) &&  $_POST["action"] == "create") {
                 $message = show_msg_user_created($_POST);
-                if($message){
+                if ($message) {
                     // Redirection après 5 secondes
-                    header("Refresh:5; url=/list");
+                    header("Refresh:3; url=/list");
                 }
             }
         }
@@ -63,7 +64,7 @@ switch ($uri) {
     case "/editUser/":
         if (isset($_POST)) {
             if (isset($_POST["action"]) && preg_match_all("/edit/i", $_POST["action"]) && $_POST["id"]) {
-                show_msg_update_sucessfully($_POST);
+                $message = show_msg_update_sucessfully($_POST);
                 // Redirection apres 5
                 header("Refresh:5; url=/details/?id=" . $_POST['id']);
             }
@@ -74,8 +75,8 @@ switch ($uri) {
             $id = $_GET["id"];
             $title = show_form_edit($id)[0];
             $content = show_form_edit($id)[1];
-            require_once "./template/template.php";
         }
+        require_once "./template/template.php";
         break;
 
     case "/dist/":

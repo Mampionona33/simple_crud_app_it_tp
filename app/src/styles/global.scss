@@ -12,29 +12,6 @@ a {
   color: #fff;
 }
 
-.navbar {
-  display: flex;
-  padding: 1rem;
-  gap: 1rem;
-  align-items: center;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  form {
-    display: flex;
-    gap: 0.5rem;
-    input {
-      width: 75%;
-    }
-  }
-}
-
-.left {
-  flex-basis: 35%;
-  flex-grow: 3;
-  &form {
-    display: flex;
-  }
-}
 
 .title1 {
   font-size: 4rem;
@@ -43,7 +20,8 @@ a {
 .container {
   display: flex;
   justify-content: center;
-  min-height: 82vh;
+  min-height: 50vh;
+  flex-direction: column;
 }
 
 .button {
@@ -93,54 +71,12 @@ a {
   }
 }
 
-.cellContainer {
-  display: flex;
-  gap: 1rem;
-}
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 10px 10px 10px 10px;
-  overflow: hidden;
-}
-
-th {
-  background-color: #020202;
-  text-align: center;
-  padding: 8px;
-  color: #fff;
-  font-size: 1.2rem;
-}
-
-th:first-child {
-  border-top-left-radius: 10px;
-}
-
-th:last-child {
-  border-top-right-radius: 10px;
-}
-td {
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #c2c0c0;
-}
-
-.noDataFound {
-  font-size: 2rem;
-  text-align: center;
-}
-
-tr:nth-child(odd) {
-  background-color: #ffffff;
-}
 
 .alert {
   display: flex;
   justify-content: center;
-  margin: 2rem;
+  margin: 0.5rem;
   padding: 1rem;
   width: fit-content;
   color: #fff;

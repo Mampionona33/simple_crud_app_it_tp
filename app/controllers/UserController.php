@@ -11,11 +11,12 @@ function show_list()
     // Affichage de la liste des utilisateurs dans la vue
     $title = user_table($users)[0];
     $content = user_table($users)[1];
-    return [$title,$content];
+    return [$title, $content];
 }
 
 
-function show_form_create(){
+function show_form_create()
+{
     $title = form_create()[0];
     $content = form_create()[1];
 }
@@ -31,8 +32,8 @@ function show_form_edit($id)
     $user =  get_user($id);
     $title = form_edit($user)[0];
     $content = form_edit($user)[1];
-    
-    return [$title,$content];
+
+    return [$title, $content];
 }
 
 function show_msg_user_created($user)
@@ -48,7 +49,6 @@ function show_msg_update_sucessfully($user)
     }
 }
 
-
 function show_pdf_list()
 {
     ob_start();
@@ -60,3 +60,8 @@ function show_pdf_list()
     }
 }
 
+
+function show_msg_delete_user($user_id)
+{
+    return   msg_delet_user_successfull();
+}

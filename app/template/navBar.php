@@ -22,7 +22,7 @@
                     <span class="material-icons-outlined">
                         preview
                     </span>
-                    Preview PDF
+                    PDF
                 </a>
             </div>
             <div>

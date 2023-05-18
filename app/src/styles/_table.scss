@@ -1,0 +1,43 @@
+.cellContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px 10px 10px 10px;
+  overflow: hidden;
+}
+
+th {
+  background-color: #020202;
+  text-align: center;
+  padding: 8px;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+th:first-child {
+  border-top-left-radius: 10px;
+}
+
+th:last-child {
+  border-top-right-radius: 10px;
+}
+td {
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #c2c0c0;
+}
+
+.noDataFound {
+  font-size: 2rem;
+  text-align: center;
+}
+
+tr:nth-child(odd) {
+  background-color: #ffffff;
+}

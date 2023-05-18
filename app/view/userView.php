@@ -33,8 +33,6 @@ function user_table($users)
     return [$title, $content];
 }
 
-
-
 function user_detail($user)
 {
     $title = "Details sur " . $user[0]["prenom"];
@@ -95,14 +93,12 @@ function form_create()
     $content .= "</form>";
     $content .= "</div>";
 
-    return [$title,$content];
-
+    return [$title, $content];
 }
-
 
 function msg_user_create($user)
 {
-    $message = '<div class="container" style="justify-content:center">';
+    $message = '<div style="justify-content:center">';
     $message .= '<div class="alert">';
     $message .= '<p>' . $user["nom"] . ' ' . $user["prenom"] . ' a bien été ajouté(e) à la liste des utilisateurs.</p>';
     $message .= "</div>";
@@ -158,25 +154,33 @@ function form_edit($user)
     return [$title, $content];
 }
 
-
-
 function msg_user_updated_successful()
 {
 
-    $content = '<div class="container" style="justify-content:center">';
-    $content .= '<div class="alert">';
-    $content .= '<p>Les informations de l\'utilisateur ont été mises à jour avec succès.</p>';
-    $content .= "</div>";
-    $content .= "</div>";
-    include_once './template/template.php';
+    $message = '<div class="container" style="justify-content:center">';
+    $message .= '<div class="alert">';
+    $message .= '<p>Les informations de l\'utilisateur ont été mises à jour avec succès.</p>';
+    $message .= "</div>";
+    $message .= "</div>";
+    return $message;
 }
 
 function msg_delete_selected_successful()
 {
-    $content = '<div class="container" style="justify-content:center">';
-    $content .= '<div class="alert">';
-    $content .= '<p>Les éléments sélectionnés ont été supprimés de la liste avec succès..</p>';
-    $content .= "</div>";
-    $content .= "</div>";
-    include_once './template/template.php';
+    $message = '<div style="justify-content:center">';
+    $message .= '<div class="alert">';
+    $message .= '<p>Les éléments sélectionnés ont été supprimés de la liste avec succès..</p>';
+    $message .= "</div>";
+    $message .= "</div>";
+    return $message;
+}
+
+function msg_delet_user_successfull()
+{
+    $message = '<div style="justify-content:center">';
+    $message .= '<div class="alert">';
+    $message .= '<p>L\'element a été supprimés de la liste avec succès..</p>';
+    $message .= "</div>";
+    $message .= "</div>";
+    return $message;
 }
