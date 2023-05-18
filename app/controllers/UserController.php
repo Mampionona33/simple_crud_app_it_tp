@@ -21,16 +21,23 @@ function show_form_create()
 function show_details($id)
 {
     $user =  get_user($id);
-    user_detail($user);
+    if ($user) {
+        $title = user_detail($user)[0];
+        $content = user_detail($user)[1];
+        return [$title, $content];
+    }
+    return null;
 }
 
 function show_form_edit($id)
 {
     $user =  get_user($id);
-    $title = form_edit($user)[0];
-    $content = form_edit($user)[1];
-
-    return [$title, $content];
+    if ($user) {
+        $title = form_edit($user)[0];
+        $content = form_edit($user)[1];
+        return [$title, $content];
+    }
+    return null;
 }
 
 function show_msg_user_created($user)
@@ -59,5 +66,9 @@ function show_pdf_list()
 
 function show_msg_delete_user($user_id)
 {
-    return   msg_delet_user_successfull();
+    if (delete_user($user_id)) {
+        return msg_delet_user_successfull();
+    } else {
+        return null;
+    }
 }

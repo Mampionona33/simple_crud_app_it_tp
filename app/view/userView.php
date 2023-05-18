@@ -47,7 +47,7 @@ function user_detail($user)
     $content .= '<p>Adresse: <span>' . $user[0]['adresse'] . '</span></p>';
     $content .= "</div>";
     $content .= "</div>";
-    include './template/template.php';
+    return [$title, $content];
 }
 
 function form_create()

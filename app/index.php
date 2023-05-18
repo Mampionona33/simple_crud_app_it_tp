@@ -26,8 +26,10 @@ switch ($uri) {
                 };
             }
             if (isset($_POST["delete_user_id"])) {
-                $message = show_msg_delete_user($_POST["delete_user_id"]);
-                header("Refresh:3; url=/");
+                if (show_msg_delete_user($_POST["delete_user_id"])) {
+                    $message = show_msg_delete_user($_POST["delete_user_id"]);
+                    header("Refresh:3; url=/");
+                }
             }
         }
 
@@ -54,7 +56,14 @@ switch ($uri) {
         if (isset($_GET['id'])) {
             header('Content-Type: text/html; charset=utf-8');
             $id = $_GET["id"];
-            show_details($id);
+            if (!$title = show_details($id)) {
+                http_response_code(404);
+                require_once "template/not_found.php";
+            } else {
+                $title = show_details($id)[0];
+                $content = show_details($id)[1];
+                require_once "./template/template.php";
+            }
         }
         break;
 
@@ -63,8 +72,8 @@ switch ($uri) {
             if (isset($_POST["action"]) &&  $_POST["action"] == "create") {
                 $message = show_msg_user_created($_POST);
                 if ($message) {
-                    // Redirection après 5 secondes
-                    header("Refresh:3; url=/list");
+                    // Redirection après 2 secondes
+                    header("Refresh:2; url=/list");
                 }
             }
         }
@@ -85,10 +94,15 @@ switch ($uri) {
         if (isset($_GET["id"])) {
             header('Content-Type: text/html; charset=utf-8');
             $id = $_GET["id"];
-            $title = show_form_edit($id)[0];
-            $content = show_form_edit($id)[1];
+            if (!show_form_edit($id)) {
+                http_response_code(404);
+                require_once "template/not_found.php";
+            } else {
+                $title = show_form_edit($id)[0];
+                $content = show_form_edit($id)[1];
+                require_once "./template/template.php";
+            }
         }
-        require_once "./template/template.php";
         break;
 
     case "/dist/":
@@ -105,8 +119,7 @@ switch ($uri) {
         break;
 
     default:
-        require_once "./model/page_not_fond.php";
-        $content = page_not_fond();
-        include_once "./template/template.php";
+        http_response_code(404);
+        require_once "template/not_found.php";
         break;
 }

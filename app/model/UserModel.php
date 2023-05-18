@@ -76,7 +76,7 @@ function delete_user($user)
     try {
         $stmt = $db->prepare("DELETE FROM users WHERE id IN (" . $user . ")");
         $stmt->execute();
-        header("Location: .");
+        return true;
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
