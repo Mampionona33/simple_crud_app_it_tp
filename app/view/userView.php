@@ -44,6 +44,7 @@ function user_detail($user)
     $content .= '<p>Age: <span>' . $user[0]['age'] . '</span></p>';
     $content .= '<p>Email: <span>' . $user[0]['email'] . '</span></p>';
     $content .= '<p>Tel: <span>' . $user[0]['tel'] . '</span></p>';
+    $content .= '<p>Adresse: <span>' . $user[0]['adresse'] . '</span></p>';
     $content .= "</div>";
     $content .= "</div>";
     include './template/template.php';

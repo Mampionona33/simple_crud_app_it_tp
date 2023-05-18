@@ -1,19 +1,16 @@
 <?php
-
 require_once 'model/UserModel.php';
 require_once 'view/userView.php';
 
-
-function show_list()
+function show_list($filtre = null)
 {
     // Récupération des utilisateurs depuis la base de données
-    $users = get_users();
+    $users = get_users($filtre);
     // Affichage de la liste des utilisateurs dans la vue
     $title = user_table($users)[0];
     $content = user_table($users)[1];
     return [$title, $content];
 }
-
 
 function show_form_create()
 {
@@ -59,7 +56,6 @@ function show_pdf_list()
         ob_clean();
     }
 }
-
 
 function show_msg_delete_user($user_id)
 {

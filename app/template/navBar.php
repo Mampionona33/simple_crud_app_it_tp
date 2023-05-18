@@ -4,7 +4,7 @@
 
             <div class="left">
                 <form action="/" method="GET">
-                    <input type="text" name="find" placeholder="Rechercher">
+                    <input type="text" name="find" placeholder="Recherche avec nom ou prénom ou adresse">
                     <button class="button" type="submit">
                         <span class="material-icons-outlined">
                             search

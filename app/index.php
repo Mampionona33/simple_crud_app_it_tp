@@ -32,10 +32,18 @@ switch ($uri) {
         }
 
         if (isset($_GET)) {
+            if (isset($_GET["find"])) {
+                if (strlen($_GET["find"]) > 0) {
+                    $title = show_list($_GET["find"])[0];
+                    $content = show_list($_GET["find"])[1];
+                } else {
+                    header("Location: /");
+                }
+            } else {
+                $title = show_list()[0];
+                $content = show_list()[1];
+            }
         }
-
-        $title = show_list()[0];
-        $content = show_list()[1];
         require_once "./template/template.php";
         break;
     case "/details/":
