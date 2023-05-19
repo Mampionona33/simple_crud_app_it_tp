@@ -83,7 +83,7 @@ switch ($uri) {
         }
         break;
 
-    case "/create/":
+    case "/create":
         if (isset($_POST)) {
             if (isset($_POST["action"]) &&  $_POST["action"] == "create") {
                 $message = show_msg_user_created($_POST);
