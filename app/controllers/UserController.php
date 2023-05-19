@@ -54,11 +54,11 @@ function show_msg_update_sucessfully($user)
     }
 }
 
-function show_pdf_list()
+function show_pdf_list($find,$age_min,$age_max)
 {
     ob_start();
     $pdf_list = new FPDF();
-    $users = get_users();
+    $users = get_users($find,$age_min,$age_max);
     if (count($users) > 0) {
         return  pdf_list($users, $pdf_list);
         ob_clean();
@@ -72,8 +72,4 @@ function show_msg_delete_user($user_id)
     } else {
         return null;
     }
-}
-
-function generate_pdf($data){
-    return GeneratePDF($data);
 }

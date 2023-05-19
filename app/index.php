@@ -36,13 +36,13 @@ switch ($uri) {
         if (isset($_GET)) {
             if (isset($_GET["find"])) {
                 $find = $_GET["find"];
-                $age_min = isset($_GET["age_min"]) ? $_GET["age_min"] : null;
-                $age_max = isset($_GET["age_max"]) ? $_GET["age_max"] : null;
-                if (strlen($find) > 0 || $age_min !== null || $age_max !== null) {
+                $age_min = isset($_GET["age_min"]) ? $_GET["age_min"] : "";
+                $age_max = isset($_GET["age_max"]) ? $_GET["age_max"] : "";
+                if (strlen($find) > 0 || $age_min !== "" || $age_max !== "") {
                     // var_dump($age_max, $age_min);
                     list($title, $content) = show_list($find, $age_min, $age_max);
                 } else {
-                    if ($age_min !== null && $age_max !== null && strlen($age_min) > 0 && strlen($age_max) > 0) {
+                    if ($age_min !== "" && $age_max !== "" && strlen($age_min) > 0 && strlen($age_max) > 0) {
                         if ($age_min > $age_max) {
                             $erreur = "L'âge min ne doit pas être supérieur à l'âge max";
                             header("Refresh:3; url=/");
@@ -127,19 +127,20 @@ switch ($uri) {
         exit;
         break;
 
-    case "/pdf_list/":
-        // header("Content-Type: application/pdf");
-        if(isset($_GET)){
-            $find = $_GET["find"];
-            $age_min = isset($_GET["age_min"]) ? $_GET["age_min"] : null;
-            $age_max = isset($_GET["age_max"]) ? $_GET["age_max"] : null;
-            var_dump($find,$age_min,$age_max);
-        }
-        // $pdf_list = generate_pdf();
-        // require_once "./fpdf/fpdf.php";
-        // show_pdf_list();
-        // var_dump(show_pdf_list());
-        break;
+        case "/pdf_list/":
+            if(isset($_GET)){
+                $find = isset( $_GET["find"]) ? $_GET["find"] : null ;
+                $age_min = isset($_GET["age_min"]) ? $_GET["age_min"] : null;
+                $age_max = isset($_GET["age_max"]) ? $_GET["age_max"] : null;
+                $users = get_users($find, $age_min, $age_max);
+        
+                require_once "./fpdf/fpdf.php";
+                $pdf = new FPDF();
+                // Générez le contenu du PDF en utilisant la fonction pdf_list
+                pdf_list($users, $pdf);
+            }
+            break;
+        
 
     default:
         http_response_code(404);

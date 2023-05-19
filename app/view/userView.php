@@ -4,8 +4,7 @@
 function user_table($users)
 {
     $title = "List users";
-    $content = "<div class=\"container\">";
-    $content .= '<form id="tableForm" method="post" action="/">';
+    $content = '<form id="tableForm" method="post" action="/">';
     $content .= "<table>";
     $content .= "<tr><th><input type=\"checkbox\" name=\"selected_ids\" id=\"selected_ids\"></th><th>Noms</th><th>Prénoms</th><th>Actions</th> </tr>";
 
@@ -29,7 +28,6 @@ function user_table($users)
 
     $content .= "</table>";
     $content .= '</form>';
-    $content .= "</div>";
     return [$title, $content];
 }
 
