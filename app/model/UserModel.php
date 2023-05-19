@@ -137,6 +137,10 @@ function pdf_list($users, $pdf_list)
 }
 
 
+function GeneratePDF($data) {
+    
+}
+
 // Utilities
 function format_civilit_and_sex($row)
 {

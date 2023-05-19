@@ -21,12 +21,12 @@
                 </a>
             </div>
             <div>
-                <a class="button right" href="/pdf_list">
+                <button title="Visualiser pdf" class="button right" id="preview_pdf_list" >
                     <span class="material-icons-outlined">
-                        preview
+                    preview
                     </span>
-                    PDF
-                </a>
+                    pdf
+                </button>
             </div>
             <div>
                 <button title="Supprimer la sélection" class="button danger right" id="delete_selected">

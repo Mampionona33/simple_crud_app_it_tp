@@ -128,10 +128,11 @@ switch ($uri) {
         break;
 
     case "/pdf_list":
-        header("Content-Type: application/pdf");
-        require_once "./fpdf/fpdf.php";
-        show_pdf_list();
-        var_dump(show_pdf_list());
+        // header("Content-Type: application/pdf");
+        echo "pdf";
+        // require_once "./fpdf/fpdf.php";
+        // show_pdf_list();
+        // var_dump(show_pdf_list());
         break;
 
     default:

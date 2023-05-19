@@ -1,6 +1,7 @@
 <?php
 require_once 'model/UserModel.php';
 require_once 'view/userView.php';
+require "./fpdf/fpdf.php";
 
 function show_list($filter = null, $age_min = null, $age_max = null)
 {
@@ -71,4 +72,8 @@ function show_msg_delete_user($user_id)
     } else {
         return null;
     }
+}
+
+function generate_pdf($data){
+
 }
