@@ -138,7 +138,10 @@ function pdf_list($users, $pdf_list)
 
 
 function GeneratePDF($data) {
-    
+  ob_start();
+  $pdf_list = new FPDF();
+  $users = get_users($data);
+  var_dump($users);
 }
 
 // Utilities

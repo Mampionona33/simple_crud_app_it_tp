@@ -75,5 +75,5 @@ function show_msg_delete_user($user_id)
 }
 
 function generate_pdf($data){
-
+    return GeneratePDF($data);
 }

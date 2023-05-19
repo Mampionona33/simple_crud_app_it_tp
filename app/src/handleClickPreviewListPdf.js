@@ -5,7 +5,7 @@ export const handleClickPreviewListPdf = () => {
     const pathname = current_url.pathname;
     const search = current_url.search;
     console.log(current_url);
-    xhr.open("GET", `/pdf_list`, true);
+    xhr.open("GET", `/pdf_list/${search}`, true);
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
         console.log(xhr.responseText);

@@ -83,7 +83,7 @@ switch ($uri) {
         }
         break;
 
-    case "/create":
+    case "/create/":
         if (isset($_POST)) {
             if (isset($_POST["action"]) &&  $_POST["action"] == "create") {
                 $message = show_msg_user_created($_POST);
@@ -127,9 +127,15 @@ switch ($uri) {
         exit;
         break;
 
-    case "/pdf_list":
+    case "/pdf_list/":
         // header("Content-Type: application/pdf");
-        echo "pdf";
+        if(isset($_GET)){
+            $find = $_GET["find"];
+            $age_min = isset($_GET["age_min"]) ? $_GET["age_min"] : null;
+            $age_max = isset($_GET["age_max"]) ? $_GET["age_max"] : null;
+            var_dump($find,$age_min,$age_max);
+        }
+        // $pdf_list = generate_pdf();
         // require_once "./fpdf/fpdf.php";
         // show_pdf_list();
         // var_dump(show_pdf_list());
