@@ -10,7 +10,7 @@ function create_table_users()
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(30) NOT NULL,
     prenom VARCHAR(30) NOT NULL,
-    age INT(3) NOT NULL,
+    age BIGINT NOT NULL,
     civilite VARCHAR(30) NOT NULL,
     email VARCHAR(30),
     adresse VARCHAR(30),
@@ -69,7 +69,7 @@ function create_user($user)
     if (isset($user["date_naissance"])) {
         $birthDate = new DateTime($user["date_naissance"]);
         $currentDate = new DateTime();
-        $age = $currentDate->diff($birthDate)->y;
+        $age = $currentDate->diff($birthDate)->format('%a') * 24 * 60 * 60; // Convert age to seconds
         $query[0]["age"] = $age;
     }
     unset($query[0]["action"]);
@@ -80,6 +80,7 @@ function create_user($user)
         return $created_user;
     }
 }
+
 
 function delete_users($users)
 {
@@ -108,13 +109,26 @@ function delete_user($user)
 function update_user($user)
 {
     $query = array($user);
+
+    // Calculate age from date of birth
+    if (isset($user["date_naissance"])) {
+        $birthDate = new DateTime($user["date_naissance"]);
+        $currentDate = new DateTime();
+        $age = $currentDate->diff($birthDate)->format('%a') * 24 * 60 * 60; // Convert age to seconds
+        $query[0]["age"] = $age;
+    }
+
     // Remove action from the query
     unset($query[0]["action"]);
+    unset($query[0]["date_naissance"]);
+
     $nom_table = "users";
     if (update_data($nom_table, $query[0])) {
         return true;
     }
 }
+
+
 
 function pdf_list($users, $pdf_list)
 {
