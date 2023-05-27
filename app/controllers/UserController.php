@@ -5,13 +5,28 @@ require "./fpdf/fpdf.php";
 
 function show_list($filter = null, $age_min = null, $age_max = null)
 {
-    // Récupération des utilisateurs depuis la base de données
-    $users = get_users($filter, $age_min, $age_max);
+    // Convertir les valeurs de l'âge en secondes
+    $age_min_seconds = null;
+    $age_max_seconds = null;
+
+    if ($age_min !== null) {
+        $age_min_seconds = $age_min * 365 * 24 * 60 * 60; // Conversion en secondes
+    }
+
+    if ($age_max !== null) {
+        $age_max_seconds = $age_max * 365 * 24 * 60 * 60; // Conversion en secondes
+    }
+
+    // Récupération des utilisateurs depuis la base de données avec les valeurs converties
+    $users = get_users($filter, $age_min_seconds, $age_max_seconds);
+
     // Affichage de la liste des utilisateurs dans la vue
     $title = user_table($users)[0];
     $content = user_table($users)[1];
+
     return [$title, $content];
 }
+
 
 function show_form_create()
 {
