@@ -66,7 +66,15 @@ function create_user($user)
 {
     $query = array($user);
     // Remove action from the query
+    if (isset($user["date_naissance"])) {
+        $birthDate = new DateTime($user["date_naissance"]);
+        $currentDate = new DateTime();
+        $age = $currentDate->diff($birthDate)->y;
+        $query[0]["age"] = $age;
+    }
     unset($query[0]["action"]);
+    unset($query[0]["date_naissance"]);
+
     $created_user = create_data("users", $query[0]);
     if ($created_user) {
         return $created_user;

@@ -63,8 +63,8 @@ function form_create()
     $content .= '<input type="text" placeholder="Prénom" required name="prenom" id="prenom">';
     $content .= '</div>';
     $content .= '<div class="input-group">';
-    $content .= '<label for="age">Age:</label>';
-    $content .= '<input type="number" min=0 placeholder="Age" required name="age" id="age">';
+    $content .= '<label for="date_naissance">Date de naissance:</label>';
+    $content .= '<input type="date" required name="date_naissance" id="date_naissance">';
     $content .= '</div>';
     $content .= '<div class="input-group">';
     $content .= '<label for="email">Email:</label>';
