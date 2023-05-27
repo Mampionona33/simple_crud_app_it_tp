@@ -81,7 +81,6 @@ function create_user($user)
     }
 }
 
-
 function delete_users($users)
 {
     $db = connect_db();
@@ -128,8 +127,6 @@ function update_user($user)
     }
 }
 
-
-
 function pdf_list($users, $pdf_list)
 {
     $pdf_list->AddPage();
@@ -157,7 +154,6 @@ function pdf_list($users, $pdf_list)
 
     $pdf_list->Output();
 }
-
 
 // Utilities
 function format_civilit_and_sex($row)

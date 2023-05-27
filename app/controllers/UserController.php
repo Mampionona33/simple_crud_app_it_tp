@@ -37,8 +37,6 @@ function show_details($id)
     return null;
 }
 
-
-
 function show_form_edit($id)
 {
     $user =  get_user($id);
@@ -59,9 +57,6 @@ function show_form_edit($id)
 }
 
 
-
-
-
 function show_msg_user_created($user)
 {
     $created_user = create_user($user);
@@ -70,8 +65,47 @@ function show_msg_user_created($user)
 
 function show_msg_update_sucessfully($user)
 {
-    if (update_user($user)) {
-        return  msg_user_updated_successful();
+    $user_id = $user["id"];
+    $initial_user = get_user($user_id);
+
+    $initial_user_nom = $initial_user[0]["nom"];
+    $initial_user_prenom = $initial_user[0]["prenom"];
+    $initial_user_age = $initial_user[0]["age"];
+    $initial_user_civilite = $initial_user[0]["civilite"];
+    $initial_user_email = $initial_user[0]["email"];
+    $initial_user_tel = $initial_user[0]["tel"];
+    $initial_user_adresse = $initial_user[0]["adresse"];
+
+    $current_user_nom = $user["nom"];
+    $current_user_prenom = $user["prenom"];
+    $current_user_civilite = $user["civilite"];
+    $current_user_email = $user["email"];
+    $current_user_tel = $user["tel"];
+    $current_user_adresse = $user["adresse"];
+
+    // Convertir la date de naissance en secondes
+    $current_user_age = 0;
+    if (isset($user["date_naissance"])) {
+        $birthDate = new DateTime($user["date_naissance"]);
+        $currentDate = new DateTime();
+        $current_user_age  = $currentDate->diff($birthDate)->format('%a') * 24 * 60 * 60; // Convert age to seconds
+    }
+
+    // Comparaison de chaque propriété
+    if (
+        $initial_user_nom == $current_user_nom &&
+        $initial_user_prenom == $current_user_prenom &&
+        $initial_user_age == $current_user_age &&
+        $initial_user_civilite == $current_user_civilite &&
+        $initial_user_email == $current_user_email &&
+        $initial_user_tel == $current_user_tel &&
+        $initial_user_adresse == $current_user_adresse
+    ) {
+        return msg_user_no_updated_required();
+    } else {
+        if (update_user($user)) {
+            return  msg_user_updated_successful();
+        }
     }
 }
 

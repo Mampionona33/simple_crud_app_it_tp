@@ -164,6 +164,17 @@ function msg_user_updated_successful()
     return $message;
 }
 
+function msg_user_no_updated_required()
+{
+
+    $message = '<div class="container" style="justify-content:center">';
+    $message .= '<div class="alert">';
+    $message .= '<p>Aucune modification apportée à l\'utilisateur.</p>';
+    $message .= "</div>";
+    $message .= "</div>";
+    return $message;
+}
+
 function msg_delete_selected_successful()
 {
     $message = '<div style="justify-content:center">';
